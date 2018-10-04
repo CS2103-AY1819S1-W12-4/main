@@ -23,14 +23,18 @@
 <li><a href="#mark-a-student-s-attendance-as-present-code-present-code">3.8. Mark a student&#8217;s attendance as present: <code>present</code></a></li>
 <li><a href="#mark-a-student-s-attendance-as-absent-code-absent-code">3.9. Mark a student&#8217;s attendance as absent: <code>absent</code></a></li>
 <li><a href="#sort-the-student-list-code-sort-code">3.10. Sort the student list: <code>sort</code></a></li>
-<li><a href="#record-a-mark-for-a-student-code-mark-code">3.11. Record a mark for a student: <code>mark</code></a></li>
-<li><a href="#view-a-student-s-marks-code-results-code">3.12. View a student&#8217;s marks: <code>results</code></a></li>
-<li><a href="#delete-a-mark-entry-code-unmark-code">3.13. Delete a mark entry: <code>unmark</code></a></li>
-<li><a href="#editing-a-student-code-edit-code">3.14. Editing a student: <code>edit</code></a></li>
-<li><a href="#viewing-command-history-code-history-code">3.15. Viewing command history : <code>history</code></a></li>
 </ul>
 </li>
-<li><a href="#command-summary">4. Command Summary</a></li>
+<li><a href="#sorting-students-by-name-code-sort-code">4. Sorting students by name : <code>sort</code></a>
+<ul class="sectlevel2">
+<li><a href="#record-a-mark-for-a-student-code-mark-code">4.1. Record a mark for a student: <code>mark</code></a></li>
+<li><a href="#view-a-student-s-marks-code-results-code">4.2. View a student&#8217;s marks: <code>results</code></a></li>
+<li><a href="#delete-a-mark-entry-code-unmark-code">4.3. Delete a mark entry: <code>unmark</code></a></li>
+<li><a href="#editing-a-student-code-edit-code">4.4. Editing a student: <code>edit</code></a></li>
+<li><a href="#viewing-command-history-code-history-code">4.5. Viewing command history : <code>history</code></a></li>
+</ul>
+</li>
+<li><a href="#command-summary">5. Command Summary</a></li>
 </ul>
 </div>
 </div>
@@ -322,29 +326,40 @@ Students are sorted according by alphabetical order by default (with no argument
 </table>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sorting-students-by-name-code-sort-code"><a class="link" href="#sorting-students-by-name-code-sort-code">4. Sorting students by name : <code>sort</code></a></h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre> Sorts all student in the address book by name. +
+Format: `sort`</pre>
+</div>
+</div>
 <div class="sect2">
-<h3 id="record-a-mark-for-a-student-code-mark-code"><a class="link" href="#record-a-mark-for-a-student-code-mark-code">3.11. Record a mark for a student: <code>mark</code></a></h3>
+<h3 id="record-a-mark-for-a-student-code-mark-code"><a class="link" href="#record-a-mark-for-a-student-code-mark-code">4.1. Record a mark for a student: <code>mark</code></a></h3>
 <div class="paragraph">
-<p>Adds a mark entry associated with a student, with the mark obtained and the maximum marks.<br>
-Format: mark s/INDEX o/OBTAINED m/MAX</p>
+<p>Adds a mark entry associated with a student given the percentage value of mark obtained.<br>
+Format: <code>mark INDEX m/MARK</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-a-student-s-marks-code-results-code"><a class="link" href="#view-a-student-s-marks-code-results-code">3.12. View a student&#8217;s marks: <code>results</code></a></h3>
+<h3 id="view-a-student-s-marks-code-results-code"><a class="link" href="#view-a-student-s-marks-code-results-code">4.2. View a student&#8217;s marks: <code>results</code></a></h3>
 <div class="paragraph">
 <p>View the mark entries associated with the student at the specified index.<br>
-Format: results INDEX</p>
+Format: <code>results INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-a-mark-entry-code-unmark-code"><a class="link" href="#delete-a-mark-entry-code-unmark-code">3.13. Delete a mark entry: <code>unmark</code></a></h3>
+<h3 id="delete-a-mark-entry-code-unmark-code"><a class="link" href="#delete-a-mark-entry-code-unmark-code">4.3. Delete a mark entry: <code>unmark</code></a></h3>
 <div class="paragraph">
 <p>Delete the indexed mark entry in the list associated with the student at the specified index.<br>
-Format: unmark INDEX</p>
+Format: <code>unmark INDEX m/MARK</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.14. Editing a student: <code>edit</code></a></h3>
+<h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">4.4. Editing a student: <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing student in the student list.<br>
 Format: <code>edit INDEX [NAME] [p/PHONE] [e/EMAIL] [t/TAG]&#8230;&#8203;</code></p>
@@ -389,7 +404,7 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-command-history-code-history-code"><a class="link" href="#viewing-command-history-code-history-code">3.15. Viewing command history : <code>history</code></a></h3>
+<h3 id="viewing-command-history-code-history-code"><a class="link" href="#viewing-command-history-code-history-code">4.5. Viewing command history : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -412,7 +427,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">4. Command Summary</a></h2>
+<h2 id="command-summary"><a class="link" href="#command-summary">5. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
@@ -459,6 +474,9 @@ e.g. <code>edit 2 James Lee e/jameslee@example.com</code></p>
 <p><strong>Sort</strong> : `sort [s/p/a]</p>
 </li>
 <li>
+<p><strong>Sort</strong> : <code>sort</code></p>
+</li>
+<li>
 <p><strong>Undo</strong> : <code>undo</code></p>
 </li>
 <li>
@@ -467,4 +485,4 @@ e.g. <code>edit 2 James Lee e/jameslee@example.com</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-02 12:25:34 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-04 00:51:10 UTC</div></div></div></body></html>
