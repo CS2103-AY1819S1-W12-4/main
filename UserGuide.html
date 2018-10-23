@@ -537,11 +537,19 @@ Format: <code>history</code></p>
 e.g. <code>add James Ho s/1 p/22224444 e/jamesho@example.com t/friend t/colleague</code></p>
 </li>
 <li>
+<p><strong>AddAssignment</strong> : <code>addAssignment n/NAME w/WEIGHT d/DEADLINE m/MAX_MARK</code><br>
+e.g. <code>addAssignment n/Assignment 1 w/15 d/14/10/2019 m/100</code></p>
+</li>
+<li>
 <p><strong>Clear</strong> : <code>clear</code></p>
 </li>
 <li>
 <p><strong>Delete</strong> : <code>delete INDEX</code><br>
 e.g. <code>delete 3</code></p>
+</li>
+<li>
+<p><strong>DeleteAssignment</strong> : <code>deleteAssignment INDEX</code><br>
+e.g. <code>deleteAssignment 3</code></p>
 </li>
 <li>
 <p><strong>Edit</strong> : <code>edit INDEX [NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code><br>
@@ -560,6 +568,9 @@ e.g. <code>edit 2 James Lee e/jameslee@example.com</code></p>
 <p><strong>Mark</strong> : <code>mark m/MARK s/INDEX o/OBTAINED m/MAX</code></p>
 </li>
 <li>
+<p><strong>MarkAssignment</strong> : <code>markAssignment INDEX id/ASSIGNMENT_INDEX m/MARK</code></p>
+</li>
+<li>
 <p><strong>Present</strong> : <code>present NAME</code></p>
 </li>
 <li>
@@ -575,6 +586,9 @@ e.g. <code>edit 2 James Lee e/jameslee@example.com</code></p>
 <p><strong>Sort</strong> : <code>sort</code></p>
 </li>
 <li>
+<p><strong>SortAssignment</strong> : <code>sortAssignment</code></p>
+</li>
+<li>
 <p><strong>Undo</strong> : <code>undo</code></p>
 </li>
 <li>
@@ -583,4 +597,4 @@ e.g. <code>edit 2 James Lee e/jameslee@example.com</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-23 14:27:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-23 14:30:22 UTC</div></div></div></body></html>
