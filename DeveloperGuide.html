@@ -32,8 +32,9 @@
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
 <li><a href="#sort-mechanism">3.3. Sort mechanism</a></li>
-<li><a href="#logging">3.4. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
+<li><a href="#assignment-data-structure">3.4. Assignment data structure</a></li>
+<li><a href="#logging">3.5. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.6. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -818,30 +819,82 @@ The primary sorting algorithm is contained in the 'UniquePersonList' class. It i
 <div class="paragraph">
 <p>The 'indicateAddressBookChanged' event is raised by 'Model' after the sorting is done to show that the Address Book has been modified.</p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>==== Design Considerations</pre>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Aspect:</strong> Implementation of <code>SortCommand</code>
-* <strong>Alternative 1 (current choice):</strong> Only sorts by names of students in the Address Book.
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-sortcommand-code"><a class="link" href="#aspect-implementation-of-code-sortcommand-code">Aspect:** Implementation of <code>SortCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Only sorts by names of students in the Address Book.
 <strong>Pros:</strong> Easy to implement and more intuitive for the user.
-<strong>Cons:</strong> Functionality is limited and may not improve user satisfaction.
-* <strong>Alternative 2:</strong> Sorts persons in the Address Book by any field (sorting by email or tag for example), which is given as an input by the user.
+<strong>Cons:</strong> Functionality is limited and may not improve user satisfaction.</p>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Sorts persons in the Address Book by any field (sorting by email or tag for example), which is given as an input by the user.
 <strong>Pros:</strong> Improved flexibility for users since they have the option to sort by any field that they want.
 <strong>Cons:</strong> Harder to implement and requires constant updating of code every time a new field in the 'Person' class is introduced.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
+<h3 id="assignment-data-structure"><a class="link" href="#assignment-data-structure">3.4. Assignment data structure</a></h3>
+<div class="paragraph">
+<p>Global information about assignment is stored in addressbook level and
+each assignment have a uniqueId that will not change when the assignment is edited.
+Also every student store a map with assignment uniqueId as key and mark obtained as value.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-assignment-operations"><a class="link" href="#aspect-data-structure-to-support-assignment-operations">Aspect: Data Structure to support assignment operations</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a hashmap of uniqueId to mark to store assignment score of each student.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Flexibility to edit assignment without having to do any operation on each student.</p>
+</li>
+<li>
+<p>Cons: Any functionality that needs to iterate through all assignment score for a student must first iterate through
+UniqueAssignmentList to know which score belongs to which assignment.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store all assignment information on each student.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement. All method that wants to read a student assignment information including score only need to read 1 student.</p>
+</li>
+<li>
+<p>Cons: Requires more memory since every assignment is stored in every student. Harder to edit assignment since we must
+edit assignment information in every single student.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.5. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.6, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -872,7 +925,7 @@ The primary sorting algorithm is contained in the 'UniquePersonList' class. It i
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.6. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2434,4 +2487,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-23 14:30:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-23 15:00:26 UTC</div></div></div></body></html>
