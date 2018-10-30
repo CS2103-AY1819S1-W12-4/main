@@ -32,10 +32,12 @@
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
 <li><a href="#sort-mechanism">3.3. Sort mechanism</a></li>
-<li><a href="#assignment-data-structure">3.4. Assignment data structure</a></li>
-<li><a href="#ui-model-binding-of-student-details">3.5. UI-Model binding of student details</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#add-profile-photo-feature">3.4. Add Profile Photo feature</a></li>
+<li><a href="#delete-profile-photo-feature">3.5. Delete Profile Photo feature</a></li>
+<li><a href="#assignment-data-structure">3.6. Assignment data structure</a></li>
+<li><a href="#ui-model-binding-of-student-details">3.7. UI-Model binding of student details</a></li>
+<li><a href="#logging">3.8. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -822,34 +824,94 @@ The primary sorting algorithm is contained in the 'UniquePersonList' class. It i
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.1. Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-implementation-of-code-sortcommand-code"><a class="link" href="#aspect-implementation-of-code-sortcommand-code">Aspect:** Implementation of <code>SortCommand</code></a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Only sorts by names of students in the Address Book.
-<strong>Pros:</strong> Easy to implement and more intuitive for the user.
-<strong>Cons:</strong> Functionality is limited and may not improve user satisfaction.</p>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Sorts persons in the Address Book by any field (sorting by email or tag for example), which is given as an input by the user.
-<strong>Pros:</strong> Improved flexibility for users since they have the option to sort by any field that they want.
-<strong>Cons:</strong> Harder to implement and requires constant updating of code every time a new field in the 'Person' class is introduced.</p>
-</li>
-</ul>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>SortCommand</code><br></p>
 </div>
+<div class="paragraph">
+<p><strong>Chosen Implementation:</strong> Only sorts by names of persons in the Address Book.<br>
+<strong>Pros:</strong> Easy to implement and more intuitive for the user.<br>
+<strong>Cons:</strong> Functionality is limited and may not satisfy the requirements of the user.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative :</strong> Sorts persons in the Address Book by any field (e.g. sorting by email or tag), which is given as an input by the user.<br>
+<strong>Pros:</strong> More flexibility for the user since he has the option to sort contacts using more fields.<br>
+<strong>Cons:</strong> Harder to implement and constant updating of code is required every time a new field in the <code>Person</code> class is introduced.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="assignment-data-structure"><a class="link" href="#assignment-data-structure">3.4. Assignment data structure</a></h3>
+<h3 id="add-profile-photo-feature"><a class="link" href="#add-profile-photo-feature">3.4. Add Profile Photo feature</a></h3>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Storage of images of profile pictures<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Chosen Implementation:</strong><br>
+Store the images in a local folder. For Windows, it will be in the AppData folder, for Mac/Linux, in the home folder.<br>
+<strong>Pros:</strong><br>
+After a profile picture is set, it will continue showing even if the image source is deleted<br>
+<strong>Cons:</strong><br>
+Extra space to store the pictures, some images may be too large and use a lot of memory.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative:</strong><br>
+Not store the images<br>
+<strong>Pros:</strong><br>
+No space requirement to store the images locally<br>
+<strong>Cons:</strong><br>
+Need to ensure that the image is not deleted, or it won&#8217;t show.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Putting a limit on profile picture size<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Chosen Implementation:</strong><br>
+Set a restriction of 5MB for each picture.<br>
+<strong>Pros:</strong><br>
+Prevents a  user from crashing the app by putting an image that&#8217;s too large in size.<br>
+<strong>Cons:</strong><br>
+Some pictures may be larger than 5MB. They can use image compression services to compress it in order to fulfill the limit.</p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative:</strong><br>
+Not put a specified restriction to the size of profile photo<br>
+<strong>Pros:</strong><br>
+User can upload image of any size.<br>
+<strong>Cons:</strong><br>
+Performance of the app might be unstable if it contains too many large images.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-profile-photo-feature"><a class="link" href="#delete-profile-photo-feature">3.5. Delete Profile Photo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.5.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>We implemented a feature which allows a user to delete the profile photo and change back to default.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Chosen Implementation:</strong><br>
+Create a new ProfilePhoto object.<br>
+<strong>Pros:</strong><br>
+Easier if developer decides to change the path of the default photo, or the properties of the ProfilePhotoclass<br>
+<strong>Cons:</strong><br>
+Creating a new object each time might be highly memory-consuming, but probably insignificant on a modern PC.<br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="assignment-data-structure"><a class="link" href="#assignment-data-structure">3.6. Assignment data structure</a></h3>
 <div class="paragraph">
 <p>Global information about assignment is stored in addressbook level and
 each assignment have a uniqueId that will not change when the assignment is edited.
 Also every student store a map with assignment uniqueId as key and mark obtained as value.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.1. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-assignment-operations"><a class="link" href="#aspect-data-structure-to-support-assignment-operations">Aspect: Data Structure to support assignment operations</a></h5>
 <div class="ulist">
@@ -888,9 +950,9 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-model-binding-of-student-details"><a class="link" href="#ui-model-binding-of-student-details">3.5. UI-Model binding of student details</a></h3>
+<h3 id="ui-model-binding-of-student-details"><a class="link" href="#ui-model-binding-of-student-details">3.7. UI-Model binding of student details</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The data <code>MoreDetailsPanel</code> binds itself to are <code>filteredPersons</code> and <code>filteredAssignments</code> in the <code>Model</code> class.</p>
 </div>
@@ -910,14 +972,14 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -948,7 +1010,7 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2510,4 +2572,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-26 16:10:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 05:23:15 UTC</div></div></div></body></html>

@@ -15,10 +15,10 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-a-student-code-add-code">3.2. Adding a student: <code>add</code></a></li>
-<li><a href="#adding-a-profile-picture-addpicture">3.3. Adding a profile picture : 'addpicture'</a></li>
+<li><a href="#adding-a-profile-photo-code-addphoto-code">3.3. Adding a profile photo : <code>addphoto</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code">3.4. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#deleting-a-student-code-delete-code">3.5. Deleting a student : <code>delete</code></a></li>
-<li><a href="#deleting-a-student-s-photo-code-deleteprofilepicture-index-code">3.6. Deleting a student&#8217;s photo: <code>deleteProfilePicture INDEX</code></a></li>
+<li><a href="#deleting-a-student-s-photo-code-deleteprofilephoto-code">3.6. Deleting a student&#8217;s photo: <code>deleteProfilePhoto</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">3.7. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.8. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></li>
@@ -166,19 +166,19 @@ A student can have multiple tags (or none).
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-profile-picture-addpicture"><a class="link" href="#adding-a-profile-picture-addpicture">3.3. Adding a profile picture : 'addpicture'</a></h3>
+<h3 id="adding-a-profile-photo-code-addphoto-code"><a class="link" href="#adding-a-profile-photo-code-addphoto-code">3.3. Adding a profile photo : <code>addphoto</code></a></h3>
 <div class="paragraph">
-<p>Adds a profile picture to a student<br></p>
+<p>Adds a profile photo to a student<br></p>
 </div>
 <div class="paragraph">
-<p>Format: <code>addpicture INDEX f/FILENAME</code></p>
+<p>Format: <code>addphoto INDEX f/FILENAME</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Adds a picture at location <code>FILENAME</code> to person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Adds a photo at location <code>FILENAME</code> to person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
 <p><code>FILENAME</code> must point to a valid image file.</p>
@@ -193,8 +193,8 @@ A student can have multiple tags (or none).
 <div class="ulist">
 <ul>
 <li>
-<p><code>addpicture 1 f/C://Users/Zackk95/Pictures/zacharytan.jpg</code><br>
-Edits the profile picture of the 1st person to be the picture at C://Users//Zackk95//Pictures//zacharytan.jpg</p>
+<p><code>addphoto 1 f/C://Users/Zackk95/Pictures/zacharytan.jpg</code><br>
+Edits the profile photo of the 1st person to be the picture at C://Users//Zackk95//Pictures//zacharytan.jpg</p>
 </li>
 </ul>
 </div>
@@ -243,17 +243,17 @@ Deletes the 2nd person in the student list.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-student-s-photo-code-deleteprofilepicture-index-code"><a class="link" href="#deleting-a-student-s-photo-code-deleteprofilepicture-index-code">3.6. Deleting a student&#8217;s photo: <code>deleteProfilePicture INDEX</code></a></h3>
+<h3 id="deleting-a-student-s-photo-code-deleteprofilephoto-code"><a class="link" href="#deleting-a-student-s-photo-code-deleteprofilephoto-code">3.6. Deleting a student&#8217;s photo: <code>deleteProfilePhoto</code></a></h3>
 <div class="paragraph">
-<p>Delete a student&#8217;s photo and sets it to the default picture.<br>
-Format: <code>deleteProfilePicture INDEX</code></p>
+<p>Delete a student&#8217;s photo and sets it to the default photo.<br>
+Format: <code>deleteProfilePhoto INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Will delete a student&#8217;s picture and set it to the default picture.</p>
+<p>Will delete a student&#8217;s photo and set it to the default photo.</p>
 </li>
 <li>
 <p>This command is irreversible!</p>
@@ -268,8 +268,8 @@ Format: <code>deleteProfilePicture INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>deleteProfilePicture 1</code><br>
-Delete the picture of the person at index 1 and set it to the default picture.</p>
+<p><code>deleteProfilePhoto 1</code><br>
+Delete the photo of the person at index 1 and set it to the default photo.</p>
 </li>
 </ul>
 </div>
@@ -563,4 +563,4 @@ e.g. <code>markAttendance 1 a/true d/14/10/2019</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-26 16:10:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 05:23:15 UTC</div></div></div></body></html>
