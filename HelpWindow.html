@@ -292,7 +292,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the student list&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>markAssignment</code>, <code>markAttendance</code>, <code>sort</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the student list&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>markAssignment</code>, <code>markAttendance</code>, <code>note</code>, <code>delnote</code>, <code>editnote</code>, <code>sort</code> and <code>clear</code>).</p>
 </div>
 </td>
 </tr>
@@ -559,14 +559,14 @@ An empty note cannot be edited!
 <div class="ulist">
 <ul>
 <li>
-<p><code>editnote 1 check finals mark addition</code>
-(Even if the student at index 1 did not have a note, it would be added and the resulting note would be <code>check finals mark addition.</code><br>
+<p><code>note 1 check finals mark addition</code>
+(Note is now: <code>check finals mark addition.</code><br>
 <code>note 1 check midterms also</code>
 (Note is now: <code>check finals mark addition, check midterms also.</code>)<br>
 <code>editnote marks checked</code><br>
 (Note is now: <code>marks checked.</code>)<br>
 <code>delnote 1</code>
-(Note deleted)</p>
+(Note deleted and reset to default <code>&lt;No note added&gt;</code>)</p>
 </li>
 </ul>
 </div>
@@ -678,4 +678,4 @@ e.g. <code>note 4 Good student</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 17:24:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 19:51:38 UTC</div></div></div></body></html>
