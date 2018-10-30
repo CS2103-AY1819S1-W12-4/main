@@ -32,6 +32,9 @@
 <li><a href="#sort-all-assignment-code-sortassignment-code">3.17. Sort all assignment: <code>sortAssignment</code></a></li>
 <li><a href="#editing-a-student-code-edit-code">3.18. Editing a student: <code>edit</code></a></li>
 <li><a href="#viewing-command-history-code-history-code">3.19. Viewing command history : <code>history</code></a></li>
+<li><a href="#add-a-note-about-a-student-code-note-code">3.20. Add a note about a student : <code>note</code></a></li>
+<li><a href="#delete-a-student-s-note-code-delnote-code">3.21. Delete a student&#8217;s note : <code>delnote</code></a></li>
+<li><a href="#edits-the-note-of-a-student-code-editnote-code">3.22. Edits the note of a student : <code>editnote</code></a></li>
 </ul>
 </li>
 <li><a href="#command-summary">4. Command Summary</a></li>
@@ -119,7 +122,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
 </li>
 <li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters can be in any order if all the parameters have prefixes e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
 </li>
 </ul>
 </div>
@@ -478,6 +481,95 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="add-a-note-about-a-student-code-note-code"><a class="link" href="#add-a-note-about-a-student-code-note-code">3.20. Add a note about a student : <code>note</code></a></h3>
+<div class="paragraph">
+<p>Attaches a note with <code>TEXT</code> to a student in the student list specified by his/her <code>INDEX</code>.<br>
+Format: <code>note INDEX TEXT</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Any added note is automatically ended with a full stop even if the input text does not have one.</p>
+</li>
+<li>
+<p>If a note is added to a student who already has a previous note, the previous note is changed to end with a comma before the new text is appended to the back.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>note 1 hardworking student</code><br>
+(Adds the text <code>hardworking student.</code> to the student at index 1)<br>
+<code>note 1 motivated too</code><br>
+(Note for student at index 1 is now <code>hardworking student, motivated too.</code>)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-a-student-s-note-code-delnote-code"><a class="link" href="#delete-a-student-s-note-code-delnote-code">3.21. Delete a student&#8217;s note : <code>delnote</code></a></h3>
+<div class="paragraph">
+<p>Deletes the corresponding note of the student at the specified <code>INDEX</code>.<br>
+Format: <code>delnote 1</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An empty note cannot be deleted!
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edits-the-note-of-a-student-code-editnote-code"><a class="link" href="#edits-the-note-of-a-student-code-editnote-code">3.22. Edits the note of a student : <code>editnote</code></a></h3>
+<div class="paragraph">
+<p>Edits the corresponding note of the student at the specified <code>INDEX</code> to <code>TEXT</code>.<br>
+Format: <code>editnote 1 update tutorial attendance week 10</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An empty note cannot be edited!
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editnote 1 check finals mark addition</code>
+(Even if the student at index 1 did not have a note, it would be added and the resulting note would be <code>check finals mark addition.</code><br>
+<code>note 1 check midterms also</code>
+(Note is now: <code>check finals mark addition, check midterms also.</code>)<br>
+<code>editnote marks checked</code><br>
+(Note is now: <code>marks checked.</code>)<br>
+<code>delnote 1</code>
+(Note deleted)</p>
+</li>
+</ul>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -530,8 +622,16 @@ e.g. <code>delete 3</code></p>
 e.g. <code>deleteAssignment 3</code></p>
 </li>
 <li>
+<p><strong>Delnote</strong> : <code>delnote INDEX</code><br>
+e.g. <code>delnote 2</code></p>
+</li>
+<li>
 <p><strong>Edit</strong> : <code>edit INDEX [NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 James Lee e/jameslee@example.com</code></p>
+</li>
+<li>
+<p><strong>Editnote</strong> : <code>editnote INDEX TEXT</code><br>
+e.g. <code>editnote 1 Consult changed to 3pm</code></p>
 </li>
 <li>
 <p><strong>Exit</strong> : <code>exit</code></p>
@@ -543,12 +643,16 @@ e.g. <code>edit 2 James Lee e/jameslee@example.com</code></p>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
 <li>
-<p><strong>MarkAssignment</strong> : <code>markAssignment INDEX id/ASSIGNMENT_INDEX m/MARK</code>
+<p><strong>MarkAssignment</strong> : <code>markAssignment INDEX id/ASSIGNMENT_INDEX m/MARK</code><br>
 e.g. <code>markAssignment 1 id/1 m/53</code></p>
 </li>
 <li>
-<p><strong>MarkAttendance</strong> : <code>markAttendance INDEX a/BOOLEAN d/DATE</code>
+<p><strong>MarkAttendance</strong> : <code>markAttendance INDEX a/BOOLEAN d/DATE</code><br>
 e.g. <code>markAttendance 1 a/true d/14/10/2019</code></p>
+</li>
+<li>
+<p><strong>Note</strong> : <code>note INDEX TEXT</code><br>
+e.g. <code>note 4 Good student</code></p>
 </li>
 <li>
 <p><strong>Present</strong> : <code>present NAME</code></p>
@@ -574,4 +678,4 @@ e.g. <code>markAttendance 1 a/true d/14/10/2019</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 16:30:44 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 16:37:14 UTC</div></div></div></body></html>
