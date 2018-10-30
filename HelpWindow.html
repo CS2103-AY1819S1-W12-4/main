@@ -22,15 +22,16 @@
 <li><a href="#undoing-previous-command-code-undo-code">3.7. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.8. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.9. Exiting the program : <code>exit</code></a></li>
-<li><a href="#mark-a-student-s-attendance-as-present-or-absent-code-markattendance-code">3.10. Mark a student&#8217;s attendance as present or absent: <code>markAttendance</code></a></li>
+<li><a href="#mark-a-student-s-attendance-as-present-or-absent-code-attend-code">3.10. Mark a student&#8217;s attendance as present or absent: <code>attend</code></a></li>
 <li><a href="#sort-the-student-list-code-sort-code">3.11. Sort the student list: <code>sort</code></a></li>
 <li><a href="#add-an-assignment-code-addassignment-code">3.12. Add an assignment: <code>addAssignment</code></a></li>
 <li><a href="#delete-an-assignment-code-deleteassignment-code">3.13. Delete an assignment: <code>deleteAssignment</code></a></li>
 <li><a href="#record-a-mark-for-a-student-code-markassignment-code">3.14. Record a mark for a student: <code>markAssignment</code></a></li>
 <li><a href="#display-the-statistics-for-an-assignment-code-assignmentstats-code">3.15. Display the statistics for an assignment: <code>assignmentStats</code></a></li>
-<li><a href="#sort-all-assignment-code-sortassignment-code">3.16. Sort all assignment: <code>sortAssignment</code></a></li>
-<li><a href="#editing-a-student-code-edit-code">3.17. Editing a student: <code>edit</code></a></li>
-<li><a href="#viewing-command-history-code-history-code">3.18. Viewing command history : <code>history</code></a></li>
+<li><a href="#display-the-statistics-for-an-assignment-code-classstats-code">3.16. Display the statistics for an assignment: <code>classStats</code></a></li>
+<li><a href="#sort-all-assignment-code-sortassignment-code">3.17. Sort all assignment: <code>sortAssignment</code></a></li>
+<li><a href="#editing-a-student-code-edit-code">3.18. Editing a student: <code>edit</code></a></li>
+<li><a href="#viewing-command-history-code-history-code">3.19. Viewing command history : <code>history</code></a></li>
 </ul>
 </li>
 <li><a href="#command-summary">4. Command Summary</a></li>
@@ -359,7 +360,7 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="mark-a-student-s-attendance-as-present-or-absent-code-markattendance-code"><a class="link" href="#mark-a-student-s-attendance-as-present-or-absent-code-markattendance-code">3.10. Mark a student&#8217;s attendance as present or absent: <code>markAttendance</code></a></h3>
+<h3 id="mark-a-student-s-attendance-as-present-or-absent-code-attend-code"><a class="link" href="#mark-a-student-s-attendance-as-present-or-absent-code-attend-code">3.10. Mark a student&#8217;s attendance as present or absent: <code>attend</code></a></h3>
 <div class="paragraph">
 <p>Records the attendance of a student as present or absent for a specified date.<br>
 Format: <code>markAttendance INDEX a/BOOLEAN d/DATE</code></p>
@@ -413,14 +414,21 @@ Format: <code>assignmentStats INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-all-assignment-code-sortassignment-code"><a class="link" href="#sort-all-assignment-code-sortassignment-code">3.16. Sort all assignment: <code>sortAssignment</code></a></h3>
+<h3 id="display-the-statistics-for-an-assignment-code-classstats-code"><a class="link" href="#display-the-statistics-for-an-assignment-code-classstats-code">3.16. Display the statistics for an assignment: <code>classStats</code></a></h3>
+<div class="paragraph">
+<p>Display the statistics for the overall grades of students.<br>
+Format: <code>classStats</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort-all-assignment-code-sortassignment-code"><a class="link" href="#sort-all-assignment-code-sortassignment-code">3.17. Sort all assignment: <code>sortAssignment</code></a></h3>
 <div class="paragraph">
 <p>Sort all assignment by deadline.<br>
 Format: <code>sortAssignment</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.17. Editing a student: <code>edit</code></a></h3>
+<h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.18. Editing a student: <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing student in the student list.<br>
 Format: <code>edit INDEX [NAME] [p/PHONE] [e/EMAIL] [t/TAG]&#8230;&#8203;</code></p>
@@ -465,7 +473,7 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-command-history-code-history-code"><a class="link" href="#viewing-command-history-code-history-code">3.18. Viewing command history : <code>history</code></a></h3>
+<h3 id="viewing-command-history-code-history-code"><a class="link" href="#viewing-command-history-code-history-code">3.19. Viewing command history : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -506,6 +514,9 @@ e.g. <code>addAssignment n/Assignment 1 w/15 d/14/10/2019 m/100</code></p>
 <li>
 <p><strong>AssignmentStats</strong> : <code>assignmentStats INDEX</code><br>
 e.g. <code>assignmentStats 1</code></p>
+</li>
+<li>
+<p><strong>ClassStats</strong> : <code>classStats</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
@@ -563,4 +574,4 @@ e.g. <code>markAttendance 1 a/true d/14/10/2019</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 09:04:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 16:00:26 UTC</div></div></div></body></html>

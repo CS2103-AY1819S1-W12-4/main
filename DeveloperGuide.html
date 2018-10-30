@@ -35,9 +35,10 @@
 <li><a href="#add-profile-photo-feature">3.4. Add Profile Photo feature</a></li>
 <li><a href="#delete-profile-photo-feature">3.5. Delete Profile Photo feature</a></li>
 <li><a href="#assignment-data-structure">3.6. Assignment data structure</a></li>
-<li><a href="#ui-model-binding-of-student-details">3.7. UI-Model binding of student details</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#attendance-data-structure">3.7. Attendance data structure</a></li>
+<li><a href="#ui-model-binding-of-student-details">3.8. UI-Model binding of student details</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -950,9 +951,55 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-model-binding-of-student-details"><a class="link" href="#ui-model-binding-of-student-details">3.7. UI-Model binding of student details</a></h3>
+<h3 id="attendance-data-structure"><a class="link" href="#attendance-data-structure">3.7. Attendance data structure</a></h3>
+<div class="paragraph">
+<p>Provides a representation of an attendance session for a particular date.
+This enables a mapping between each student and multiple attendance sessions
+with a record of attendance/absense for that session.</p>
+</div>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.7.1. Current Implementation</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-assignment-operations-2"><a class="link" href="#aspect-data-structure-to-support-assignment-operations-2">Aspect: Data Structure to support assignment operations</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Adaptation of Assignment model, using a hashmap for each student to record the attendance/absense
+with the uniqueId of the Attendance session. AttendanceMark is a subclass of the Mark class from the Assignment model, limited to a value of 1 or 0.
+The Attendance session date is represented with the Deadline class from the Assignment model.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Limited code duplication, consistent model implementation, prevents inconsistent attendance records across the class.</p>
+</li>
+<li>
+<p>Cons: Calculating attendance requires iterating and mapping.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Store a list of attendance marks for each student.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Higher cohesion with attendance data represented together with student.</p>
+</li>
+<li>
+<p>Cons: Attendance session data is distributed across all students which increases complexity of operations affecting all students.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ui-model-binding-of-student-details"><a class="link" href="#ui-model-binding-of-student-details">3.8. UI-Model binding of student details</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The data <code>MoreDetailsPanel</code> binds itself to are <code>filteredPersons</code> and <code>filteredAssignments</code> in the <code>Model</code> class.</p>
 </div>
@@ -972,14 +1019,14 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1010,7 +1057,7 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2572,4 +2619,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 09:04:50 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-10-30 16:00:26 UTC</div></div></div></body></html>
