@@ -128,7 +128,7 @@
 <h3 id="add-an-assignment-code-addassignment-code"><a class="link" href="#add-an-assignment-code-addassignment-code">Add an assignment: <code>addAssignment</code></a></h3>
 <div class="paragraph">
 <p>Adds an assignment with given assignment name, weight, deadline, maximum mark.<br>
-Format: <code>addAssignment n/NAME w/WEIGHT d/DEADLINE m/MAX_MARK</code></p>
+Format: <code>addAssignment n/ASSIGNMENTNAME w/WEIGHT d/DEADLINE m/MAX_MARK</code></p>
 </div>
 </div>
 <div class="sect2">
@@ -139,9 +139,23 @@ Format: <code>deleteAssignment INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="edit-an-assignment-code-editassignment-code"><a class="link" href="#edit-an-assignment-code-editassignment-code">Edit an assignment: <code>editAssignment</code></a></h3>
+<div class="paragraph">
+<p>Edit an existing assignment with specified informations.
+Format: <code>editAssignment INDEX [n/ASSIGNMENTNAME] [w/WEIGHT] [d/DEADLINE] [m/MAX_MARK]</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort-all-assignment-code-sortassignment-code"><a class="link" href="#sort-all-assignment-code-sortassignment-code">Sort all assignment: <code>sortAssignment</code></a></h3>
+<div class="paragraph">
+<p>Sort all assignment by deadline.<br>
+Format: <code>sortAssignment</code></p>
+</div>
+</div>
+<div class="sect2">
 <h3 id="record-a-mark-for-a-student-code-markassignment-code"><a class="link" href="#record-a-mark-for-a-student-code-markassignment-code">Record a mark for a student: <code>markAssignment</code></a></h3>
 <div class="paragraph">
-<p>Adds a mark for an assignment associated with a student given the mark obtained.<br>
+<p>Adds a mark for an assignment associated with a student given the mark obtained. Can mark more than maxMark in case of bonus score.<br>
 Format: <code>markAssignment INDEX id/ASSIGNMENT_INDEX m/MARK</code></p>
 </div>
 <hr>
@@ -234,4 +248,4 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 15:18:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-06 17:27:23 UTC</div></div></div></body></html>
