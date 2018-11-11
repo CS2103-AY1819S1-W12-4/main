@@ -30,16 +30,18 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-feature">3.1. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#sort-mechanism">3.3. Sort mechanism</a></li>
-<li><a href="#add-profile-photo-feature">3.4. Add Profile Photo feature</a></li>
-<li><a href="#delete-profile-photo-feature">3.5. Delete Profile Photo feature</a></li>
-<li><a href="#assignment-data-structure">3.6. Assignment data structure</a></li>
-<li><a href="#attendance-data-structure">3.7. Attendance data structure</a></li>
-<li><a href="#ui-model-binding-of-student-details">3.8. UI-Model binding of student details</a></li>
-<li><a href="#note-data-structure">3.9. Note data structure</a></li>
-<li><a href="#logging">3.10. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
+<li><a href="#sort-mechanism">3.2. Sort mechanism</a></li>
+<li><a href="#add-profile-photo-feature">3.3. Add Profile Photo feature</a></li>
+<li><a href="#delete-profile-photo-feature">3.4. Delete Profile Photo feature</a></li>
+<li><a href="#assignment-data-structure">3.5. Assignment data structure</a></li>
+<li><a href="#attendance-data-structure">3.6. Attendance data structure</a></li>
+<li><a href="#ui-model-binding-of-student-details">3.7. UI-Model binding of student details</a></li>
+<li><a href="#note-data-structure">3.8. Note data structure</a></li>
+<li><a href="#assignment-statistics-feature">3.9. Assignment Statistics feature</a></li>
+<li><a href="#class-statistics-feature">3.10. Class Statistics feature</a></li>
+<li><a href="#grade-display-feature">3.11. Grade Display feature</a></li>
+<li><a href="#logging">3.12. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.13. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -810,13 +812,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sort-mechanism"><a class="link" href="#sort-mechanism">3.3. Sort mechanism</a></h3>
+<h3 id="sort-mechanism"><a class="link" href="#sort-mechanism">3.2. Sort mechanism</a></h3>
 <div class="paragraph">
 <p>The sort mechanism is reliant on the logic component.
 The primary sorting algorithm is contained in the 'UniquePersonList' class. It is implemented easily by using a 'Person' comparator.</p>
@@ -825,7 +821,7 @@ The primary sorting algorithm is contained in the 'UniquePersonList' class. It i
 <p>The 'indicateAddressBookChanged' event is raised by 'Model' after the sorting is done to show that the Address Book has been modified.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.3.1. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.1. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-sortcommand-code"><a class="link" href="#aspect-implementation-of-code-sortcommand-code">Aspect: Implementation of <code>SortCommand</code></a></h5>
 <div class="paragraph">
@@ -842,9 +838,9 @@ The primary sorting algorithm is contained in the 'UniquePersonList' class. It i
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-profile-photo-feature"><a class="link" href="#add-profile-photo-feature">3.4. Add Profile Photo feature</a></h3>
+<h3 id="add-profile-photo-feature"><a class="link" href="#add-profile-photo-feature">3.3. Add Profile Photo feature</a></h3>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.4.1. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Storage of images of profile pictures<br></p>
 </div>
@@ -886,15 +882,15 @@ Performance of the app might be unstable if it contains too many large images.</
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-profile-photo-feature"><a class="link" href="#delete-profile-photo-feature">3.5. Delete Profile Photo feature</a></h3>
+<h3 id="delete-profile-photo-feature"><a class="link" href="#delete-profile-photo-feature">3.4. Delete Profile Photo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.5.1. Current Implementation</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>We implemented a feature which allows a user to delete the profile photo and change back to default.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Chosen Implementation:</strong><br>
 Create a new ProfilePhoto object.<br>
@@ -906,14 +902,14 @@ Creating a new object each time might be highly memory-consuming, but probably i
 </div>
 </div>
 <div class="sect2">
-<h3 id="assignment-data-structure"><a class="link" href="#assignment-data-structure">3.6. Assignment data structure</a></h3>
+<h3 id="assignment-data-structure"><a class="link" href="#assignment-data-structure">3.5. Assignment data structure</a></h3>
 <div class="paragraph">
 <p>Global information about assignment is stored in addressbook level and
 each assignment have a uniqueId that will not change when the assignment is edited.
 Also every student store a map with assignment uniqueId as key and mark obtained as value.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.6.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.1. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-assignment-operations"><a class="link" href="#aspect-data-structure-to-support-assignment-operations">Aspect: Data Structure to support assignment operations</a></h5>
 <div class="ulist">
@@ -952,20 +948,26 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="attendance-data-structure"><a class="link" href="#attendance-data-structure">3.7. Attendance data structure</a></h3>
+<h3 id="attendance-data-structure"><a class="link" href="#attendance-data-structure">3.6. Attendance data structure</a></h3>
 <div class="paragraph">
 <p>Provides a representation of an attendance session for a particular date.
 This enables a mapping between each student and multiple attendance sessions
-with a record of attendance/absense for that session.</p>
+with a record of attendance/absence for that session.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
+</div>
+<div class="title">Figure 10. Structure of the Model Component including the Attendance data structure</div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.7.1. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.1. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-assignment-operations-2"><a class="link" href="#aspect-data-structure-to-support-assignment-operations-2">Aspect: Data Structure to support assignment operations</a></h5>
+<h5 id="aspect-data-structure-to-support-attendance-operations"><a class="link" href="#aspect-data-structure-to-support-attendance-operations">Aspect: Data Structure to support attendance operations</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Adaptation of Assignment model, using a hashmap for each student to record the attendance/absense
+<p><strong>Alternative 1 (current choice):</strong> Adaptation of Assignment model, using a HashMap for each student to record the attendance/absence
 with the uniqueId of the Attendance session. AttendanceMark is a subclass of the Mark class from the Assignment model, limited to a value of 1 or 0.
 The Attendance session date is represented with the Deadline class from the Assignment model.</p>
 <div class="ulist">
@@ -998,9 +1000,9 @@ The Attendance session date is represented with the Deadline class from the Assi
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-model-binding-of-student-details"><a class="link" href="#ui-model-binding-of-student-details">3.8. UI-Model binding of student details</a></h3>
+<h3 id="ui-model-binding-of-student-details"><a class="link" href="#ui-model-binding-of-student-details">3.7. UI-Model binding of student details</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.8.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The data <code>MoreDetailsPanel</code> binds itself to are <code>filteredPersons</code> and <code>filteredAssignments</code> in the <code>Model</code> class.</p>
 </div>
@@ -1020,15 +1022,15 @@ The Attendance session date is represented with the Deadline class from the Assi
 </div>
 </div>
 <div class="sect2">
-<h3 id="note-data-structure"><a class="link" href="#note-data-structure">3.9. Note data structure</a></h3>
+<h3 id="note-data-structure"><a class="link" href="#note-data-structure">3.8. Note data structure</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.9.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>A <code>Note</code> stores a String <code>text</code> (content of the note) and methods to manipulate the text in a note.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.9.2. Design considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.8.2. Design considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-note-auto-punctuation"><a class="link" href="#aspect-note-auto-punctuation">Aspect: Note auto-punctuation</a></h5>
 <div class="ulist">
@@ -1112,7 +1114,7 @@ The Attendance session date is represented with the Deadline class from the Assi
 <div class="content">
 <img src="images/EditNoteFeatureClassDiagram.png" alt="EditNoteFeatureClassDiagram" width="800">
 </div>
-<div class="title">Figure 10. Structure of Note commands (only classes closely related to EditNoteCommand shown)</div>
+<div class="title">Figure 11. Structure of Note commands (only classes closely related to EditNoteCommand shown)</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1179,14 +1181,168 @@ The Attendance session date is represented with the Deadline class from the Assi
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.10. Logging</a></h3>
+<h3 id="assignment-statistics-feature"><a class="link" href="#assignment-statistics-feature">3.9. Assignment Statistics feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.9.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The <code>Mark</code> objects associated with the <code>Assignment</code> are obtained by filtering the <code>Mark</code> HashMap
+using the assignment unique id as the key, for each <code>Person</code> in the addressbook.
+The maximum, minimum, and average marks are calculated by the <code>DoubleSummaryStatistics</code> object.
+The median, 25th, and 75th percentiles are calculated by indexing a sorted array of the <code>Mark</code> values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.9.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-specification-of-the-assignment-model"><a class="link" href="#aspect-specification-of-the-assignment-model">Aspect: Specification of the Assignment Model</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a stream to filter the <code>Mark</code> objects associated with the <code>Assignment</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Implementation follows specification of the Assignment Model.</p>
+</li>
+<li>
+<p>Cons: <code>Mark</code> objects are associated with <code>Person</code> objects, thus requiring several linear operations to obtain
+all <code>Mark</code> objects associated with one <code>Assignment</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a new mapping between <code>Mark</code> objects and each <code>Assignment</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: <code>Mark</code> objects can be aggregated over time, eliminating the need to filter each time.</p>
+</li>
+<li>
+<p>Cons: Major changes to the specification of the Assignment Model.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="class-statistics-feature"><a class="link" href="#class-statistics-feature">3.10. Class Statistics feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.10.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>For each <code>Person</code> in the addressbook, the associated <code>Mark</code> objects are cross-referenced using the
+unique id for each <code>Assignment</code> to calculate the grade of each assignment to obtain the
+weighted overall grade of each student.
+The maximum, minimum, and average marks are calculated by the <code>DoubleSummaryStatistics</code> object.
+The median, 25th, and 75th percentiles are calculated by indexing a sorted array of the overall grades.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">3.10.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-specification-of-the-assignment-model-2"><a class="link" href="#aspect-specification-of-the-assignment-model-2">Aspect: Specification of the Assignment Model</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a stream to group the <code>Mark</code> objects by association
+with each <code>Person</code> and calculate the overall grade using the relevant <code>Assignment</code> objects for each <code>Mark</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Implementation follows specification of the Assignment Model.</p>
+</li>
+<li>
+<p>Cons: Several linear operations must be performed to
+bridge the association between each <code>Mark</code>, <code>Assignment</code>, and <code>Person</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a class data structure to record the data for the entire class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Calculations may be performed within the data structure.</p>
+</li>
+<li>
+<p>Cons: Increased operations for each change in data due to high coupling between <code>Mark</code>, <code>Assignment</code>, and <code>Person</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="grade-display-feature"><a class="link" href="#grade-display-feature">3.11. Grade Display feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.11.1. Current Implementation</a></h4>
+<div class="paragraph">
+<p>The information for each <code>Assignment</code> object in the addressbook is listed,
+including the the index number, name, deadline, weight, mark, and maximum mark.<br>
+The mark is obtained from the <code>Mark</code> associated with the selected <code>Person</code> object.<br>
+The total grade for the student is calculated as a weighted sum of the marks for all the assignments and listed below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/grade_display.png" alt="grade display" width="800">
+</div>
+<div class="title">Figure 12. Grade Display</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">3.11.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-evaluation-of-total-grade-for-the-student"><a class="link" href="#aspect-evaluation-of-total-grade-for-the-student">Aspect: Evaluation of total grade for the student</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Calculate the total grade on demand.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Implementation does not require additional models.</p>
+</li>
+<li>
+<p>Cons: The calculation is linear and must bbe performed every time the student is selected.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a new model to aggregate the total grade.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The total grade is readily available and may be used elsewhere in the application.</p>
+</li>
+<li>
+<p>Cons: Increased operations for each change in data to update the total grade.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.12. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.11, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.13, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1217,7 +1373,7 @@ The Attendance session date is represented with the Deadline class from the Assi
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.11. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.13. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1283,7 +1439,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 11. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 13. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -2779,4 +2935,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 12:58:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 05:48:46 UTC</div></div></div></body></html>

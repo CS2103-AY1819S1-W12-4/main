@@ -33,8 +33,8 @@
 <li><a href="#edit-an-assignment-code-editassignment-code">3.18. Edit an assignment: <code>editAssignment</code></a></li>
 <li><a href="#sort-all-assignment-code-sortassignment-code">3.19. Sort all assignment: <code>sortAssignment</code></a></li>
 <li><a href="#record-a-mark-for-a-student-code-markassignment-code">3.20. Record a mark for a student: <code>markAssignment</code></a></li>
-<li><a href="#display-the-statistics-for-an-assignment-code-assignmentstats-code">3.21. Display the statistics for an assignment: <code>assignmentStats</code></a></li>
-<li><a href="#display-the-statistics-for-an-assignment-code-classstats-code">3.22. Display the statistics for an assignment: <code>classStats</code></a></li>
+<li><a href="#display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code">3.21. Display the statistics for the marks of an assignment: <code>assignmentStats</code></a></li>
+<li><a href="#display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code">3.22. Display the statistics for the total grades of the students in the class: <code>classStats</code></a></li>
 <li><a href="#editing-a-student-code-edit-code">3.23. Editing a student: <code>edit</code></a></li>
 <li><a href="#viewing-command-history-code-history-code">3.24. Viewing command history : <code>history</code></a></li>
 <li><a href="#add-a-note-about-a-student-code-note-code">3.25. Add a note about a student : <code>note</code></a></li>
@@ -516,17 +516,29 @@ Format: <code>markAssignment INDEX id/ASSIGNMENT_INDEX m/MARK</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-the-statistics-for-an-assignment-code-assignmentstats-code"><a class="link" href="#display-the-statistics-for-an-assignment-code-assignmentstats-code">3.21. Display the statistics for an assignment: <code>assignmentStats</code></a></h3>
+<h3 id="display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code"><a class="link" href="#display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code">3.21. Display the statistics for the marks of an assignment: <code>assignmentStats</code></a></h3>
 <div class="paragraph">
-<p>Display the statistics for the specified assignment.<br>
-Format: <code>assignmentStats INDEX</code></p>
+<p>Displays the number of submissions and the maximum, highest, lowest, 25th/75th percentiles, average, and median mark for the specified assignment.<br>
+Format: <code>assignmentStats ASSIGNMENT_INDEX</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/assignment_stats.png" alt="assignment stats" width="800">
+</div>
+<div class="title">Figure 1. Assignment Statistics</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-the-statistics-for-an-assignment-code-classstats-code"><a class="link" href="#display-the-statistics-for-an-assignment-code-classstats-code">3.22. Display the statistics for an assignment: <code>classStats</code></a></h3>
+<h3 id="display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code"><a class="link" href="#display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code">3.22. Display the statistics for the total grades of the students in the class: <code>classStats</code></a></h3>
 <div class="paragraph">
-<p>Display the statistics for the overall grades of students.<br>
+<p>Displays the number of students and the maximum, highest, lowest, 25th/75th percentiles, average, and median total grade.<br>
 Format: <code>classStats</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/class_stats.png" alt="class stats" width="800">
+</div>
+<div class="title">Figure 2. Class Statistics</div>
 </div>
 </div>
 <div class="sect2">
@@ -730,7 +742,7 @@ e.g. <code>add n/James Ho s/1 p/22224444 e/jamesho@example.com t/friend t/collea
 e.g. <code>addAssignment n/Assignment 1 w/15 d/14/10/2019 m/100</code></p>
 </li>
 <li>
-<p><strong>AssignmentStats</strong> : <code>assignmentStats INDEX</code><br>
+<p><strong>AssignmentStats</strong> : <code>assignmentStats ASSIGNMENT_INDEX</code><br>
 e.g. <code>assignmentStats 1</code></p>
 </li>
 <li>
@@ -813,4 +825,4 @@ e.g. <code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 12:58:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 05:48:46 UTC</div></div></div></body></html>

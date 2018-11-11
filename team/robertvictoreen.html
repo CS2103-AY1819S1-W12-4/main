@@ -9,14 +9,71 @@
 <div class="sect1">
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>EazyTutors</p>
+<div class="sect2">
+<h3 id="purpose"><a class="link" href="#purpose">Purpose</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>This project portfolio documents my role and contributions to the <strong>EazyTutors</strong> project. I was responsible for the grade statistics features and display of grades.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="the-team"><a class="link" href="#the-team">The Team</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>My team comprises of students from the National University of Singapore and we decided on creating this application after observing the hassle tutors have to deal with when marking attendance.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="the-application"><a class="link" href="#the-application">The Application</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>EazyTutors is a desktop statistics recording application used for managing classes of students. It was created with NUS tutors in mind, but can be extended to tutors or teachers from other organizations as well. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="features"><a class="link" href="#features">Features</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Mark students' attendance</p>
+</li>
+<li>
+<p>Record students' assignment scores</p>
+</li>
+<li>
+<p>Calculate assignment statistics</p>
+</li>
+<li>
+<p>Calculate class performance</p>
+</li>
+<li>
+<p>Add students' photos</p>
+</li>
+<li>
+<p>Record notes about students</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="preface"><a class="link" href="#preface">Preface</a></h3>
+<div class="paragraph">
+<p>This section describes my contribution to the project, including code, documentation and administrative tasks.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -30,83 +87,84 @@
 <p>Justification: This feature enables tutors to analyse the grades of students to provide relative feedback based on the performance of the class.</p>
 </li>
 <li>
-<p>Highlights: Provides high, low, 25th/75th percentiles, average, and median of the grades.</p>
-</li>
-<li>
-<p>Credits:</p>
+<p>Highlights: Provides maximum, highest, lowest, 25th/75th percentiles, average, and median grade.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Major enhancement</strong>: Attendance Model</p>
+<p><strong>Minor enhancement</strong>: Grade Display</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: Provides a representation of an attendance session for a particular date.</p>
+<p>What it does: Displays the assignment grades and overall grade for each student.</p>
+</li>
+<li>
+<p>Justification: This enhancement enables tutors to view the performance of each student.</p>
+</li>
+<li>
+<p>Highlights: Calculates the total grade on demand using the specifications of the assignment model.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Attendance Model</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Represents an attendance session for a particular date.</p>
 </li>
 <li>
 <p>Justification: This enhancement provides the model for the attendance feature.</p>
 </li>
 <li>
-<p>Highlights: This enables a mapping between each student and multiple attendance sessions
-with a record of attendance/absense for that session.</p>
-</li>
-<li>
-<p>Credits:</p>
+<p>Highlights: Provides a mapping between each student and multiple attendance sessions with a record of attendance/absence for that session.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: Calculate and display the assignment grades when a student is selected.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103-AY1819S1-W12-4/main/commits/master?author=robertvictoreen" class="bare">https://github.com/CS2103-AY1819S1-W12-4/main/commits/master?author=robertvictoreen</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=robertvictoreen">RepoSense</a>] [<a href="https://github.com/CS2103-AY1819S1-W12-4/main/commits/master?author=robertvictoreen">GitHub</a>]</p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
+<p>Enhancements to existing features:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Review pull requests:</p>
+<p>Updated the UI to display the grades of each student (Pull requests <a href="https://github.com/CS2103-AY1819S1-W12-4/main/pull/81">#81</a>, <a href="https://github.com/CS2103-AY1819S1-W12-4/main/pull/142">#142</a>)</p>
+</li>
+<li>
+<p>Updated the storage model to integrate new features (Pull request <a href="https://github.com/CS2103-AY1819S1-W12-4/main/pull/104">#104</a>)</p>
+</li>
+<li>
+<p>Modified tests for existing features to ensure accuracy with changes in functionality (Pull request <a href="https://github.com/CS2103-AY1819S1-W12-4/main/pull/104">#104</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Enhancements to existing features:
-<strong>*</strong></p>
-</li>
-<li>
-<p>Documentation:</p>
+<p>Community:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>UserGuide / DeveloperGuide</p>
-</li>
-</ul>
-</div>
+<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com/CS2103-AY1819S1-W12-4/main/pull/52">#52</a>, <a href="https://github.com/CS2103-AY1819S1-W12-4/main/pull/55">#55</a></p>
 </li>
 <li>
-<p>Community:
-<strong>*</strong></p>
-</li>
-<li>
-<p>Tools:
-<strong>*</strong></p>
+<p>Contributed to bug fixes (Pull request <a href="https://github.com/CS2103-AY1819S1-W12-4/main/pull/104">#104</a>)</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -123,6 +181,32 @@ with a record of attendance/absense for that session.</p>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code"><a class="link" href="#display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code">Display the statistics for the marks of an assignment: <code>assignmentStats</code></a></h3>
+<div class="paragraph">
+<p>Displays the number of submissions and the maximum, highest, lowest, 25th/75th percentiles, average, and median mark for the specified assignment.<br>
+Format: <code>assignmentStats ASSIGNMENT_INDEX</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/assignment_stats.png" alt="assignment stats" width="800">
+</div>
+<div class="title">Figure 1. Assignment Statistics</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code"><a class="link" href="#display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code">Display the statistics for the total grades of the students in the class: <code>classStats</code></a></h3>
+<div class="paragraph">
+<p>Displays the number of students and the maximum, highest, lowest, 25th/75th percentiles, average, and median total grade.<br>
+Format: <code>classStats</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/class_stats.png" alt="class stats" width="800">
+</div>
+<div class="title">Figure 2. Class Statistics</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -139,20 +223,180 @@ with a record of attendance/absense for that session.</p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="attendance-data-structure"><a class="link" href="#attendance-data-structure">Attendance data structure</a></h3>
+<h3 id="assignment-statistics-feature"><a class="link" href="#assignment-statistics-feature">Assignment Statistics feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>Provides a representation of an attendance session for a particular date.
-This enables a mapping between each student and multiple attendance sessions
-with a record of attendance/absense for that session.</p>
+<p>The <code>Mark</code> objects associated with the <code>Assignment</code> are obtained by filtering the <code>Mark</code> HashMap
+using the assignment unique id as the key, for each <code>Person</code> in the addressbook.
+The maximum, minimum, and average marks are calculated by the <code>DoubleSummaryStatistics</code> object.
+The median, 25th, and 75th percentiles are calculated by indexing a sorted array of the <code>Mark</code> values.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-assignment-operations"><a class="link" href="#aspect-data-structure-to-support-assignment-operations">Aspect: Data Structure to support assignment operations</a></h5>
+<h5 id="aspect-specification-of-the-assignment-model"><a class="link" href="#aspect-specification-of-the-assignment-model">Aspect: Specification of the Assignment Model</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Adaptation of Assignment model, using a hashmap for each student to record the attendance/absense
+<p><strong>Alternative 1 (current choice):</strong> Use a stream to filter the <code>Mark</code> objects associated with the <code>Assignment</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Implementation follows specification of the Assignment Model.</p>
+</li>
+<li>
+<p>Cons: <code>Mark</code> objects are associated with <code>Person</code> objects, thus requiring several linear operations to obtain
+all <code>Mark</code> objects associated with one <code>Assignment</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a new mapping between <code>Mark</code> objects and each <code>Assignment</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: <code>Mark</code> objects can be aggregated over time, eliminating the need to filter each time.</p>
+</li>
+<li>
+<p>Cons: Major changes to the specification of the Assignment Model.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="class-statistics-feature"><a class="link" href="#class-statistics-feature">Class Statistics feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>For each <code>Person</code> in the addressbook, the associated <code>Mark</code> objects are cross-referenced using the
+unique id for each <code>Assignment</code> to calculate the grade of each assignment to obtain the
+weighted overall grade of each student.
+The maximum, minimum, and average marks are calculated by the <code>DoubleSummaryStatistics</code> object.
+The median, 25th, and 75th percentiles are calculated by indexing a sorted array of the overall grades.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-specification-of-the-assignment-model-2"><a class="link" href="#aspect-specification-of-the-assignment-model-2">Aspect: Specification of the Assignment Model</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use a stream to group the <code>Mark</code> objects by association
+with each <code>Person</code> and calculate the overall grade using the relevant <code>Assignment</code> objects for each <code>Mark</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Implementation follows specification of the Assignment Model.</p>
+</li>
+<li>
+<p>Cons: Several linear operations must be performed to
+bridge the association between each <code>Mark</code>, <code>Assignment</code>, and <code>Person</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a class data structure to record the data for the entire class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Calculations may be performed within the data structure.</p>
+</li>
+<li>
+<p>Cons: Increased operations for each change in data due to high coupling between <code>Mark</code>, <code>Assignment</code>, and <code>Person</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="grade-display-feature"><a class="link" href="#grade-display-feature">Grade Display feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The information for each <code>Assignment</code> object in the addressbook is listed,
+including the the index number, name, deadline, weight, mark, and maximum mark.<br>
+The mark is obtained from the <code>Mark</code> associated with the selected <code>Person</code> object.<br>
+The total grade for the student is calculated as a weighted sum of the marks for all the assignments and listed below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/grade_display.png" alt="grade display" width="800">
+</div>
+<div class="title">Figure 3. Grade Display</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-evaluation-of-total-grade-for-the-student"><a class="link" href="#aspect-evaluation-of-total-grade-for-the-student">Aspect: Evaluation of total grade for the student</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Calculate the total grade on demand.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Implementation does not require additional models.</p>
+</li>
+<li>
+<p>Cons: The calculation is linear and must bbe performed every time the student is selected.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Create a new model to aggregate the total grade.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: The total grade is readily available and may be used elsewhere in the application.</p>
+</li>
+<li>
+<p>Cons: Increased operations for each change in data to update the total grade.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="attendance-data-structure"><a class="link" href="#attendance-data-structure">Attendance data structure</a></h3>
+<div class="paragraph">
+<p>Provides a representation of an attendance session for a particular date.
+This enables a mapping between each student and multiple attendance sessions
+with a record of attendance/absence for that session.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
+</div>
+<div class="title">Figure 4. Structure of the Model Component including the Attendance data structure</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-data-structure-to-support-attendance-operations"><a class="link" href="#aspect-data-structure-to-support-attendance-operations">Aspect: Data Structure to support attendance operations</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Adaptation of Assignment model, using a HashMap for each student to record the attendance/absence
 with the uniqueId of the Attendance session. AttendanceMark is a subclass of the Mark class from the Assignment model, limited to a value of 1 or 0.
 The Attendance session date is represented with the Deadline class from the Assignment model.</p>
 <div class="ulist">
@@ -185,13 +429,4 @@ The Attendance session date is represented with the Deadline class from the Assi
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="project"><a class="link" href="#project">PROJECT:</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-10 12:58:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 05:48:46 UTC</div></div></div></body></html>
