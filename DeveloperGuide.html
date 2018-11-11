@@ -820,19 +820,63 @@ The primary sorting algorithm is contained in the 'UniquePersonList' class. It i
 <div class="paragraph">
 <p>The 'indicateAddressBookChanged' event is raised by 'Model' after the sorting is done to show that the Address Book has been modified.</p>
 </div>
+<div class="paragraph">
+<p>The sequence diagram below illustrates how the sort mechanism works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SortUMLSequenceDiagram.png" alt="SortUMLSequenceDiagram" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User executes the <code>sort</code> command which is then parsed through <code>AddressBookParser</code>.</p>
+</li>
+<li>
+<p>A new <code>sort</code> command is created and it then executes the <code>sort</code> method in <code>ModelManager</code>.</p>
+</li>
+<li>
+<p><code>ModelManager</code> calls the internal sorting function in the <code>UniquePersonList</code> class and the person list is sorted.</p>
+</li>
+<li>
+<p>Lastly, the <code>updateFilteredPersonList()</code> method in <code>ModelManager</code> is called and it then returns the result.</p>
+</li>
+</ol>
+</div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.1. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-implementation-of-code-sortcommand-code"><a class="link" href="#aspect-implementation-of-code-sortcommand-code">Aspect: Implementation of <code>SortCommand</code></a></h5>
-<div class="paragraph">
-<p><strong>Chosen Implementation:</strong> Only sorts by names of persons in the Address Book.<br>
-<strong>Pros:</strong> Easy to implement and more intuitive for the user.<br>
-<strong>Cons:</strong> Functionality is limited and may not satisfy the requirements of the user.<br></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Only sorts by names of persons in the Address Book.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and more intuitive for the user.</p>
+</li>
+<li>
+<p>Cons: Functionality is limited and may not satisfy the demands of the user.</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p><strong>Alternative :</strong> Sorts persons in the Address Book by any field (e.g. sorting by email or tag), which is given as an input by the user.<br>
-<strong>Pros:</strong> More flexibility for the user since he has the option to sort contacts using more fields.<br>
-<strong>Cons:</strong> Harder to implement and constant updating of code is required every time a new field in the <code>Person</code> class is introduced.</p>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Sorts persons in the Address Book by any field (e.g. sorting by email or tag), which is given as an input by the user.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More flexibility for the user since he has the option to sort contacts using more fields.</p>
+</li>
+<li>
+<p>Cons: Harder to implement and constant updating of code is required every time a new field in the <code>Person</code> class is introduced.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -840,64 +884,163 @@ The primary sorting algorithm is contained in the 'UniquePersonList' class. It i
 <div class="sect2">
 <h3 id="add-profile-photo-feature"><a class="link" href="#add-profile-photo-feature">3.3. Add Profile Photo feature</a></h3>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.1. Design Considerations</a></h4>
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Storage of images of profile pictures<br></p>
+<p>The student&#8217;s Profile Photo can be viewed at the right side of the student&#8217;s profile card.</p>
 </div>
 <div class="paragraph">
-<p><strong>Chosen Implementation:</strong><br>
-Store the images in a local folder. For Windows, it will be in the AppData folder, for Mac/Linux, in the home folder.<br>
-<strong>Pros:</strong><br>
-After a profile picture is set, it will continue showing even if the image source is deleted<br>
-<strong>Cons:</strong><br>
-Extra space to store the pictures, some images may be too large and use a lot of memory.<br></p>
+<p>The following sequence diagram shows how the <code>addphoto</code> command works.</p>
 </div>
-<div class="paragraph">
-<p><strong>Alternative:</strong><br>
-Not store the images<br>
-<strong>Pros:</strong><br>
-No space requirement to store the images locally<br>
-<strong>Cons:</strong><br>
-Need to ensure that the image is not deleted, or it won&#8217;t show.<br></p>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddProfilePhotoUMLSequenceDiagram.png" alt="AddProfilePhotoUMLSequenceDiagram" width="800">
 </div>
-<div class="paragraph">
-<p><strong>Aspect:</strong> Putting a limit on profile picture size<br></p>
 </div>
-<div class="paragraph">
-<p><strong>Chosen Implementation:</strong><br>
-Set a restriction of 5MB for each picture.<br>
-<strong>Pros:</strong><br>
-Prevents a  user from crashing the app by putting an image that&#8217;s too large in size.<br>
-<strong>Cons:</strong><br>
-Some pictures may be larger than 5MB. They can use image compression services to compress it in order to fulfill the limit.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user inputs the <code>addphoto INDEX f/FILENAME</code> command, with parameters <code>INDEX</code> and <code>FILENAME</code></p>
+</li>
+<li>
+<p>The <code>AddressBookParser</code> class parses the command to create a new <code>AddProfilePhotoCommand</code> class.</p>
+</li>
+<li>
+<p>The <code>AddProfilePhotoCommand</code> command is executed and handled by the <code>ModelManager</code> class.</p>
+</li>
+<li>
+<p>A new <code>ProfilePhoto</code> object is created, containing the image referenced by <code>FILENAME</code></p>
+</li>
+<li>
+<p>The new <code>ProfilePhoto</code> is attached to the <code>Person</code> at <code>INDEX</code></p>
+</li>
+<li>
+<p>The new profile photo is displayed</p>
+</li>
+</ol>
 </div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.3.2. Design Considerations</a></h4>
 <div class="paragraph">
-<p><strong>Alternative:</strong><br>
-Not put a specified restriction to the size of profile photo<br>
-<strong>Pros:</strong><br>
-User can upload image of any size.<br>
-<strong>Cons:</strong><br>
-Performance of the app might be unstable if it contains too many large images.</p>
+<p><strong>Aspect:</strong> Implementation of <code>AddProfilePhotoCommand</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Store the images in a local folder. For Windows, it will be in the AppData folder, for Mac/Linux, in the home folder.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: After a profile photo is set, it will continue showing even if the image source is deleted.</p>
+</li>
+<li>
+<p>Cons: It requires space to store the photos, some images may be too large and consume a lot of memory.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Not store the image.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: No space requirement to store the images locally.</p>
+</li>
+<li>
+<p>Cons: Need to ensure that the images is not deleted, or it won&#8217;t show.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Set a restriction of 5MB for each photo.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Prevents a user from crashing the app by putting an image that&#8217;s too large in size.</p>
+</li>
+<li>
+<p>Cons: Some photos may be larger than 5MB. They can use image compression services to compress it in order to fulfill the limit.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Not put a specified restriction to the size of profile photo.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: User can upload image of any size.</p>
+</li>
+<li>
+<p>Cons: Performance of the app might be unstable if it contains too many large images.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="delete-profile-photo-feature"><a class="link" href="#delete-profile-photo-feature">3.4. Delete Profile Photo feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.4.1. Current Implementation</a></h4>
+<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.4.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>We implemented a feature which allows a user to delete the profile photo and change back to default.</p>
+<p>This is a feature which allows a user to delete the profile photo and changes it back to default.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>deleteProfilePhoto</code> command works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DeleteProfilePhotoUMLSequenceDiagram.png" alt="DeleteProfilePhotoUMLSequenceDiagram" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the <code>deleteProfilePhoto INDEX</code> command, with parameters <code>INDEX</code></p>
+</li>
+<li>
+<p>The <code>AddressBookParser</code> class parses the command to create a new <code>DeleteProfilePhotoCommand</code> class.</p>
+</li>
+<li>
+<p>The <code>DeleteProfilePhotoCommand</code> command is executed and handled by the <code>ModelManager</code> class.</p>
+</li>
+<li>
+<p>A new <code>ProfilePhoto</code> object is created, containing the default image.</p>
+</li>
+<li>
+<p>The new <code>ProfilePhoto</code> is attached to the <code>Person</code> at <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The default profile photo will now show and the person&#8217;s image would be deleted.</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.4.2. Design Considerations</a></h4>
 <div class="paragraph">
-<p><strong>Chosen Implementation:</strong><br>
-Create a new ProfilePhoto object.<br>
-<strong>Pros:</strong><br>
-Easier if developer decides to change the path of the default photo, or the properties of the ProfilePhotoclass<br>
-<strong>Cons:</strong><br>
-Creating a new object each time might be highly memory-consuming, but probably insignificant on a modern PC.<br></p>
+<p><strong>Aspect:</strong> Implementation of <code>DeleteProfilePhotoCommand</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a new ProfilePhoto object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier if developer decides to change the path of the default photo, or the properties of the ProfilePhotoclass.</p>
+</li>
+<li>
+<p>Cons: Creating a new object each time might be highly memory-consuming, but probably insignificant on a modern PC.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1002,7 +1145,7 @@ The Attendance session date is represented with the Deadline class from the Assi
 <div class="sect2">
 <h3 id="ui-model-binding-of-student-details"><a class="link" href="#ui-model-binding-of-student-details">3.7. UI-Model binding of student details</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.7.1. Current Implementation</a></h4>
+<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.7.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The data <code>MoreDetailsPanel</code> binds itself to are <code>filteredPersons</code> and <code>filteredAssignments</code> in the <code>Model</code> class.</p>
 </div>
@@ -1024,7 +1167,7 @@ The Attendance session date is represented with the Deadline class from the Assi
 <div class="sect2">
 <h3 id="note-data-structure"><a class="link" href="#note-data-structure">3.8. Note data structure</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-4"><a class="link" href="#current-implementation-4">3.8.1. Current Implementation</a></h4>
+<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.8.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>A <code>Note</code> stores a String <code>text</code> (content of the note) and methods to manipulate the text in a note.</p>
 </div>
@@ -1183,7 +1326,7 @@ The Attendance session date is represented with the Deadline class from the Assi
 <div class="sect2">
 <h3 id="assignment-statistics-feature"><a class="link" href="#assignment-statistics-feature">3.9. Assignment Statistics feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-5"><a class="link" href="#current-implementation-5">3.9.1. Current Implementation</a></h4>
+<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.9.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The <code>Mark</code> objects associated with the <code>Assignment</code> are obtained by filtering the <code>Mark</code> HashMap
 using the assignment unique id as the key, for each <code>Person</code> in the addressbook.
@@ -1232,7 +1375,7 @@ all <code>Mark</code> objects associated with one <code>Assignment</code>.</p>
 <div class="sect2">
 <h3 id="class-statistics-feature"><a class="link" href="#class-statistics-feature">3.10. Class Statistics feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-6"><a class="link" href="#current-implementation-6">3.10.1. Current Implementation</a></h4>
+<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.10.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>For each <code>Person</code> in the addressbook, the associated <code>Mark</code> objects are cross-referenced using the
 unique id for each <code>Assignment</code> to calculate the grade of each assignment to obtain the
@@ -1283,7 +1426,7 @@ bridge the association between each <code>Mark</code>, <code>Assignment</code>, 
 <div class="sect2">
 <h3 id="grade-display-feature"><a class="link" href="#grade-display-feature">3.11. Grade Display feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation-7"><a class="link" href="#current-implementation-7">3.11.1. Current Implementation</a></h4>
+<h4 id="current-implementation-8"><a class="link" href="#current-implementation-8">3.11.1. Current Implementation</a></h4>
 <div class="paragraph">
 <p>The information for each <code>Assignment</code> object in the addressbook is listed,
 including the the index number, name, deadline, weight, mark, and maximum mark.<br>
@@ -2935,4 +3078,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 05:48:46 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 09:24:37 UTC</div></div></div></body></html>
