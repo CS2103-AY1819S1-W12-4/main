@@ -203,9 +203,10 @@
 <h2 id="introduction"><a class="link" href="#introduction">Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>EazyTutors is an application for tutors or teachers who prefer a virtual way to record students’ attendance. It
-also boasts extra features to check on students’ progress and helps users customise their teaching to students
-with different capabilities. EazyTutors is optimized for those who prefer to work with a Command Line Interface
+<p>EazyTutors is an application for tutors or teachers who prefer a virtual way to manage a class of students. It allows
+users to mark students' attendance, as well as checking on students' individual progress. This helps users customise
+their teaching to students with different capabilities. It boasts extra features such as calculating the class
+statistics and assignment statistics. EazyTutors is optimized for those who prefer to work with a Command Line Interface
 (CLI) while still having the benefits of a Graphical User Interface (GUI). You won&#8217;t need to bring around attendance
 sheets anymore with EazyTutors! Interested? Jump to Section 2, “Quick Start” to get started. Enjoy!</p>
 </div>
@@ -225,7 +226,7 @@ Format: <code>note INDEX TEXT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Any added note is automatically ended with a full stop even if the input text does not have one.</p>
+<p>Any added note is automatically ended with a full stop unless the input <code>TEXT</code> ends with either <code>.</code>, <code>!</code> or <code>?</code>.</p>
 </li>
 <li>
 <p>If a note is added to a student who already has a previous note, the previous note is changed to end with a comma before the new text is appended to the back.</p>
@@ -254,8 +255,8 @@ Format: <code>note INDEX TEXT</code></p>
 <li>
 <p><code>note 1 hardworking student</code><br>
 (Adds the text <code>hardworking student.</code> to the student at index 1)<br>
-<code>note 1 motivated too</code><br>
-(Note for student at index 1 is now <code>hardworking student, motivated too.</code>)</p>
+<code>note 1 motivated too!</code><br>
+(Note for student at index 1 is now <code>hardworking student, motivated too!</code>)</p>
 </li>
 </ul>
 </div>
@@ -323,9 +324,9 @@ An empty note cannot be edited!
 <li>
 <p><code>note 1 check finals mark addition</code>
 (Note is now: <code>check finals mark addition.</code><br>
-<code>note 1 check midterms also</code>
-(Note is now: <code>check finals mark addition, check midterms also.</code>)<br>
-<code>editnote marks checked</code><br>
+<code>note 1 check midterms also?</code>
+(Note is now: <code>check finals mark addition, check midterms also?</code>)<br>
+<code>editnote marks checked.</code>
 (Note is now: <code>marks checked.</code>)<br>
 <code>delnote 1</code>
 (Note deleted and reset to default <code>&lt;No note added&gt;</code>)</p>
@@ -372,7 +373,7 @@ An empty note cannot be edited!
 <div class="ulist">
 <ul>
 <li>
-<p><code>filteredPersons</code>&#8201;&#8212;&#8201;Current students stored in the database.</p>
+<p><code>filteredPersons</code>&#8201;&#8212;&#8201;Current students (filtered by <code>find</code> command) stored in the database.</p>
 </li>
 <li>
 <p><code>filteredAssignments</code>&#8201;&#8212;&#8201;The names of all the assignments that the students have in the database.</p>
@@ -380,7 +381,9 @@ An empty note cannot be edited!
 </ul>
 </div>
 <div class="paragraph">
-<p><code>MoreDetailsPanel</code> will be notified by any changes in the data when a related event is raised, such as <code>PersonPanelSelectionChangedEvent</code>. It will then retrieve the new student&#8217;s marks using <code>filteredPersons</code> and display them with reference to their names in <code>filteredAssignments</code>.</p>
+<p><code>MoreDetailsPanel</code> will be notified by any changes in the data when a related event is raised, such as
+<code>PersonPanelSelectionChangedEvent</code>. It will then retrieve the new student&#8217;s marks and note using <code>filteredPersons</code>
+ and display them with reference to their names in <code>filteredAssignments</code>.</p>
 </div>
 </div>
 </div>
@@ -389,7 +392,9 @@ An empty note cannot be edited!
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
 <div class="paragraph">
-<p>A <code>Note</code> stores a String <code>text</code> (content of the note) and methods to manipulate the text in a note.</p>
+<p>A <code>Note</code> stores a String <code>text</code> (content of the note). <code>text</code> is final and never changed once initialized. When a
+<code>note</code> or <code>editnote</code> command is executed, a new <code>Note</code> is created with the final <code>text</code>. The methods in the <code>Note</code> class
+return a new <code>Note</code> object with the new <code>text</code>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -399,7 +404,23 @@ An empty note cannot be edited!
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1(current choice):</strong> <code>Note</code> texts are automatically ended with a full stop (<code>.</code>) if it is not added by the user, unless the user ends the text with <code>!</code> or <code>?</code>. When text is added to a <code>Note</code> that already has text, the current <code>text</code> is changed to end with a comma (<code>,</code>) instead, before the new text is appended to the end.</p>
+<p><strong>Alternative 1(current choice):</strong> <code>Note</code> texts are automatically ended with a full stop (<code>.</code>) if it is not added by
+the user, unless the user ends the text with <code>!</code> or <code>?</code>. When a <code>note</code> or <code>editnote</code> command is executed on a <code>Note</code>
+that already has text, the previous text&#8217;s punctuation is changed to a comma (<code>,</code>) instead before being added to the
+final <code>text</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The workflow for this algorithm is shown below. <strong>Text</strong> refers to the text being added, <strong>noteText</strong> refers to the existing
+text in the <code>Note</code> and <strong>newText</strong> refers to the final text in the newly created <code>Note</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/NoteTextAdditionActivityDiagram.png" alt="NoteTextAdditionActivityDiagram" width="800">
+</div>
+<div class="title">Figure 1. Activity Diagram for Text Addition</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -417,24 +438,25 @@ An empty note cannot be edited!
 <div class="ulist">
 <ul>
 <li>
-<p>If the user wishes to end their notes with other punctuation such as <code>!</code> or <code>?</code>, the user has to add it into their input.</p>
+<p>If the user wishes to end their notes with other punctuation such as <code>!</code> or <code>?</code>, the user has to add it into their
+input.</p>
 </li>
 <li>
 <p>Other special characters used to end sentences will not be detected and a full stop will be added to them.</p>
 </li>
 <li>
 <p>Developers have to manually add special characters to be checked for.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> No editing of <code>Note</code> text, <code>text</code> will be whatever the user inputs.</p>
 <div class="ulist">
 <ul>
+<li>
+<p><strong>Alternative 2:</strong> No editing of <code>Note</code> text, <code>text</code> will be whatever the user inputs.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p>Pros:<br></p>
 <div class="ulist">
@@ -460,16 +482,15 @@ An empty note cannot be edited!
 </li>
 </ul>
 </div>
-</li>
-</ul>
-</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-edit-note-implementation"><a class="link" href="#aspect-edit-note-implementation">Aspect: Edit note implementation</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use <code>note</code> command in implementation.</p>
+<p><strong>Alternative 1 (current choice):</strong> Delete the note before adding it using <code>note</code> command. As deleting the note is
+similar in both <code>delnote</code> and <code>editnote</code>, they implement the <code>NoteDeleter</code> interface with has a default method
+<code>copyWithoutNote</code> to reduce repeated code.</p>
 </li>
 </ul>
 </div>
@@ -477,7 +498,10 @@ An empty note cannot be edited!
 <div class="content">
 <img src="../images/EditNoteFeatureClassDiagram.png" alt="EditNoteFeatureClassDiagram" width="800">
 </div>
-<div class="title">Figure 1. Structure of Note commands (only classes closely related to EditNoteCommand shown)</div>
+<div class="title">Figure 2. Structure of Note commands (only classes closely related to EditNoteCommand shown)</div>
+</div>
+<div class="paragraph">
+<p>An example of how the <code>editnote</code> command would work is depicted in the sequence diagram below.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -557,4 +581,4 @@ An empty note cannot be edited!
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 18:02:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 20:18:58 UTC</div></div></div></body></html>

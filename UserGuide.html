@@ -50,9 +50,10 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>EazyTutors is an application for tutors or teachers who prefer a virtual way to record students’ attendance. It
-also boasts extra features to check on students’ progress and helps users customise their teaching to students
-with different capabilities. EazyTutors is optimized for those who prefer to work with a Command Line Interface
+<p>EazyTutors is an application for tutors or teachers who prefer a virtual way to manage a class of students. It allows
+users to mark students' attendance, as well as checking on students' individual progress. This helps users customise
+their teaching to students with different capabilities. It boasts extra features such as calculating the class
+statistics and assignment statistics. EazyTutors is optimized for those who prefer to work with a Command Line Interface
 (CLI) while still having the benefits of a Graphical User Interface (GUI). You won&#8217;t need to bring around attendance
 sheets anymore with EazyTutors! Interested? Jump to Section 2, “Quick Start” to get started. Enjoy!</p>
 </div>
@@ -398,7 +399,7 @@ Format: <code>undo</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the student list&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>addAssignment</code>, <code>deleteAssignment</code>, <code>markAssignment</code>, <code>attend</code>, <code>note</code>, <code>delnote</code>, <code>editnote</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the student list&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>sort</code>, <code>addAssignment</code>, <code>deleteAssignment</code>, <code>editAssignment</code>, <code>markAssignment</code>, <code>attend</code>, <code>note</code>, <code>delnote</code>, <code>editnote</code>, <code>addphoto</code>, <code>deleteProfilePhoto</code> and <code>clear</code>).</p>
 </div>
 </td>
 </tr>
@@ -613,7 +614,7 @@ Format: <code>note INDEX TEXT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p>Any added note is automatically ended with a full stop even if the input text does not have one.</p>
+<p>Any added note is automatically ended with a full stop unless the input <code>TEXT</code> ends with either <code>.</code>, <code>!</code> or <code>?</code>.</p>
 </li>
 <li>
 <p>If a note is added to a student who already has a previous note, the previous note is changed to end with a comma before the new text is appended to the back.</p>
@@ -642,8 +643,8 @@ Format: <code>note INDEX TEXT</code></p>
 <li>
 <p><code>note 1 hardworking student</code><br>
 (Adds the text <code>hardworking student.</code> to the student at index 1)<br>
-<code>note 1 motivated too</code><br>
-(Note for student at index 1 is now <code>hardworking student, motivated too.</code>)</p>
+<code>note 1 motivated too!</code><br>
+(Note for student at index 1 is now <code>hardworking student, motivated too!</code>)</p>
 </li>
 </ul>
 </div>
@@ -711,9 +712,9 @@ An empty note cannot be edited!
 <li>
 <p><code>note 1 check finals mark addition</code>
 (Note is now: <code>check finals mark addition.</code><br>
-<code>note 1 check midterms also</code>
-(Note is now: <code>check finals mark addition, check midterms also.</code>)<br>
-<code>editnote marks checked</code><br>
+<code>note 1 check midterms also?</code>
+(Note is now: <code>check finals mark addition, check midterms also?</code>)<br>
+<code>editnote marks checked.</code>
 (Note is now: <code>marks checked.</code>)<br>
 <code>delnote 1</code>
 (Note deleted and reset to default <code>&lt;No note added&gt;</code>)</p>
@@ -834,4 +835,4 @@ e.g. <code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 18:02:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 20:18:58 UTC</div></div></div></body></html>
