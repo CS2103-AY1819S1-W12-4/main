@@ -238,456 +238,7 @@ Delete the photo of the person at index 1 and set it to the default photo.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
-<div class="paragraph">
-<p>Restores the student list to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the student list&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>addAssignment</code>, <code>deleteAssignment</code>, <code>markAssignment</code>, <code>attend</code>, <code>note</code>, <code>delnote</code>, <code>editnote</code> and <code>clear</code>).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>select 2</code>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>results</code><br>
-<code>select 1</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command only if the last command is <code>undo</code>.<br>
-Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="mark-a-student-s-attendance-as-present-code-attend-code"><a class="link" href="#mark-a-student-s-attendance-as-present-code-attend-code">Mark a student&#8217;s attendance as present: <code>attend</code></a></h3>
-<div class="paragraph">
-<p>Records the attendance of a student as present for a specified class.<br>
-Format: <code>attend INDEX at/CLASSNAME</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="mark-a-student-s-attendance-as-absent-code-unattend-code-coming-in-v1-4"><a class="link" href="#mark-a-student-s-attendance-as-absent-code-unattend-code-coming-in-v1-4">Mark a student&#8217;s attendance as absent: <code>unattend</code> {Coming in v1.4}</a></h3>
-<div class="paragraph">
-<p>Records the attendance of a student as absent for a specified class.<br>
-Format: <code>unattend INDEX at/CLASSNAME</code></p>
-</div>
-</div>
-<div class="sect2">
 <h3 id="sort-the-student-list-code-sort-code"><a class="link" href="#sort-the-student-list-code-sort-code">Sort the student list: <code>sort</code></a></h3>
-<div class="paragraph">
-<p>Sort the student list by alphabetical order.<br>
-Format: <code>sort</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="add-an-assignment-code-addassignment-code"><a class="link" href="#add-an-assignment-code-addassignment-code">Add an assignment: <code>addAssignment</code></a></h3>
-<div class="paragraph">
-<p>Adds an assignment with given assignment name, weight, deadline, maximum mark.<br>
-Format: <code>addAssignment n/ASSIGNMENTNAME w/WEIGHT d/DEADLINE m/MAX_MARK</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="delete-an-assignment-code-deleteassignment-code"><a class="link" href="#delete-an-assignment-code-deleteassignment-code">Delete an assignment: <code>deleteAssignment</code></a></h3>
-<div class="paragraph">
-<p>Delete an assignment with given assignment index.<br>
-Format: <code>deleteAssignment INDEX</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="edit-an-assignment-code-editassignment-code"><a class="link" href="#edit-an-assignment-code-editassignment-code">Edit an assignment: <code>editAssignment</code></a></h3>
-<div class="paragraph">
-<p>Edit an existing assignment with specified informations.
-Format: <code>editAssignment INDEX [n/ASSIGNMENTNAME] [w/WEIGHT] [d/DEADLINE] [m/MAX_MARK]</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sort-all-assignment-code-sortassignment-code"><a class="link" href="#sort-all-assignment-code-sortassignment-code">Sort all assignment: <code>sortAssignment</code></a></h3>
-<div class="paragraph">
-<p>Sort all assignment by deadline.<br>
-Format: <code>sortAssignment</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="record-a-mark-for-a-student-code-markassignment-code"><a class="link" href="#record-a-mark-for-a-student-code-markassignment-code">Record a mark for a student: <code>markAssignment</code></a></h3>
-<div class="paragraph">
-<p>Adds a mark for an assignment associated with a student given the mark obtained. Can mark more than maxMark in case of bonus score.<br>
-Format: <code>markAssignment INDEX id/ASSIGNMENT_INDEX m/MARK</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code"><a class="link" href="#display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code">Display the statistics for the marks of an assignment: <code>assignmentStats</code></a></h3>
-<div class="paragraph">
-<p>Displays the number of submissions and the maximum, highest, lowest, 25th/75th percentiles, average, and median mark for the specified assignment.<br>
-Format: <code>assignmentStats ASSIGNMENT_INDEX</code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/assignment_stats.png" alt="assignment stats" width="800">
-</div>
-<div class="title">Figure 1. Assignment Statistics</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code"><a class="link" href="#display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code">Display the statistics for the total grades of the students in the class: <code>classStats</code></a></h3>
-<div class="paragraph">
-<p>Displays the number of students and the maximum, highest, lowest, 25th/75th percentiles, average, and median total grade.<br>
-Format: <code>classStats</code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/class_stats.png" alt="class stats" width="800">
-</div>
-<div class="title">Figure 2. Class Statistics</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">Editing a student: <code>edit</code></a></h3>
-<div class="paragraph">
-<p>Edits an existing student in the student list.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed student list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-<li>
-<p>At least one of the optional fields must be provided.</p>
-</li>
-<li>
-<p>Existing values will be updated to the input values.</p>
-</li>
-<li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
-</li>
-<li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="viewing-command-history-code-history-code"><a class="link" href="#viewing-command-history-code-history-code">Viewing command history : <code>history</code></a></h3>
-<div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="add-a-note-about-a-student-code-note-code"><a class="link" href="#add-a-note-about-a-student-code-note-code">Add a note about a student : <code>note</code></a></h3>
-<div class="paragraph">
-<p>Attaches a note with <code>TEXT</code> to a student in the student list specified by his/her <code>INDEX</code>.<br>
-Format: <code>note INDEX TEXT</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Any added note is automatically ended with a full stop even if the input text does not have one.</p>
-</li>
-<li>
-<p>If a note is added to a student who already has a previous note, the previous note is changed to end with a comma before the new text is appended to the back.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<code>TEXT</code> should not begin with a whitespace but alphanumeric and special characters are allowed.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>note 1 hardworking student</code><br>
-(Adds the text <code>hardworking student.</code> to the student at index 1)<br>
-<code>note 1 motivated too</code><br>
-(Note for student at index 1 is now <code>hardworking student, motivated too.</code>)</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="delete-a-student-s-note-code-delnote-code"><a class="link" href="#delete-a-student-s-note-code-delnote-code">Delete a student&#8217;s note : <code>delnote</code></a></h3>
-<div class="paragraph">
-<p>Deletes the corresponding note of the student at the specified <code>INDEX</code>.<br>
-Format: <code>delnote INDEX</code></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>There can be any number of spaces between <code>delnote</code> and <code>INDEX</code>.<br></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-An empty note cannot be deleted!<br>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delnote 2</code>
-(Deletes the note of the 2nd student shown, is invalid if there is less than 2 students in the shown student list.)</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="edits-the-note-of-a-student-code-editnote-code"><a class="link" href="#edits-the-note-of-a-student-code-editnote-code">Edits the note of a student : <code>editnote</code></a></h3>
-<div class="paragraph">
-<p>Edits the corresponding note of the student at the specified <code>INDEX</code> to <code>TEXT</code>. Refer to <a href="#add-a-note-about-a-student-code-note-code">Add a note about a student : <code>note</code></a> for details on <code>TEXT</code>.<br>
-Format: <code>editnote INDEX TEXT</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-An empty note cannot be edited!
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>note 1 check finals mark addition</code>
-(Note is now: <code>check finals mark addition.</code><br>
-<code>note 1 check midterms also</code>
-(Note is now: <code>check finals mark addition, check midterms also.</code>)<br>
-<code>editnote marks checked</code><br>
-(Note is now: <code>marks checked.</code>)<br>
-<code>delnote 1</code>
-(Note deleted and reset to default <code>&lt;No note added&gt;</code>)</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Add</strong> : <code>add n/NAME [s/INDEX p/PHONE_NUMBER e/EMAIL t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho s/1 p/22224444 e/jamesho@example.com t/friend t/colleague</code></p>
-</li>
-<li>
-<p><strong>AddAssignment</strong> : <code>addAssignment n/NAME w/WEIGHT d/DEADLINE m/MAX_MARK</code><br>
-e.g. <code>addAssignment n/Assignment 1 w/15 d/14/10/2019 m/100</code></p>
-</li>
-<li>
-<p><strong>AssignmentStats</strong> : <code>assignmentStats ASSIGNMENT_INDEX</code><br>
-e.g. <code>assignmentStats 1</code></p>
-</li>
-<li>
-<p><strong>Attend</strong> : <code>attend INDEX at/CLASSNAME</code><br>
-e.g. <code>attend 1 at/Tutorial 1</code></p>
-</li>
-<li>
-<p><strong>ClassStats</strong> : <code>classStats</code></p>
-</li>
-<li>
-<p><strong>Clear</strong> : <code>clear</code></p>
-</li>
-<li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
-</li>
-<li>
-<p><strong>DeleteAssignment</strong> : <code>deleteAssignment INDEX</code><br>
-e.g. <code>deleteAssignment 3</code></p>
-</li>
-<li>
-<p><strong>Delnote</strong> : <code>delnote INDEX</code><br>
-e.g. <code>delnote 2</code></p>
-</li>
-<li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
-</li>
-<li>
-<p><strong>EditAssignment</strong> : <code>editAssignment INDEX [n/NAME] [w/WEIGHT] [d/DEADLINE] [m/MAXMARK]</code><br>
-e.g. <code>edit 2 n/Assignment3 w/40</code></p>
-</li>
-<li>
-<p><strong>Editnote</strong> : <code>editnote INDEX TEXT</code><br>
-e.g. <code>editnote 1 Consult changed to 3pm</code></p>
-</li>
-<li>
-<p><strong>Exit</strong> : <code>exit</code></p>
-</li>
-<li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]
-e.g. `find James Jake</code></p>
-</li>
-<li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
-<p><strong>History</strong> : <code>history</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
-</li>
-<li>
-<p><strong>MarkAssignment</strong> : <code>markAssignment INDEX id/ASSIGNMENT_INDEX m/MARK</code><br>
-e.g. <code>markAssignment 1 id/1 m/53</code></p>
-</li>
-<li>
-<p><strong>Note</strong> : <code>note INDEX TEXT</code><br>
-e.g. <code>note 4 Good student</code></p>
-</li>
-<li>
-<p><strong>Redo</strong> : <code>redo</code></p>
-</li>
-<li>
-<p><strong>Select</strong> : <code>select INDEX</code>
-e.g. <code>select 2</code></p>
-</li>
-<li>
-<p><strong>Sort</strong> : <code>sort</code></p>
-</li>
-<li>
-<p><strong>SortAssignment</strong> : <code>sortAssignment</code></p>
-</li>
-<li>
-<p><strong>Unattend</strong> : <code>unattend INDEX at/CLASSNAME</code> {Coming in v1.4}</p>
-</li>
-<li>
-<p><strong>Undo</strong> : <code>undo</code></p>
-</li>
-</ul>
-</div>
-<div class="sect2">
-<h3 id="sort-the-student-list-code-sort-code-2"><a class="link" href="#sort-the-student-list-code-sort-code-2">Sort the student list: <code>sort</code></a></h3>
 <div class="paragraph">
 <p>Sort the student list by alphabetical order.<br>
 Format: <code>sort</code></p>
@@ -810,7 +361,69 @@ Format: <code>sort</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-the-student-list-code-sort-code-3"><a class="link" href="#sort-the-student-list-code-sort-code-3">Sort the student list: <code>sort</code></a></h3>
+<h3 id="delete-profile-photo-feature"><a class="link" href="#delete-profile-photo-feature">Delete Profile Photo feature</a></h3>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>This is a feature which allows a user to delete the profile photo and changes it back to default.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>deleteProfilePhoto</code> command works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DeleteProfilePhotoUMLSequenceDiagram.png" alt="DeleteProfilePhotoUMLSequenceDiagram" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the <code>deleteProfilePhoto INDEX</code> command, with parameters <code>INDEX</code></p>
+</li>
+<li>
+<p>The <code>AddressBookParser</code> class parses the command to create a new <code>DeleteProfilePhotoCommand</code> class.</p>
+</li>
+<li>
+<p>The <code>DeleteProfilePhotoCommand</code> command is executed and handled by the <code>ModelManager</code> class.</p>
+</li>
+<li>
+<p>A new <code>ProfilePhoto</code> object is created, containing the default image.</p>
+</li>
+<li>
+<p>The new <code>ProfilePhoto</code> is attached to the <code>Person</code> at <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The default profile photo will now show and the person&#8217;s image would be deleted.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>DeleteProfilePhotoCommand</code></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Create a new ProfilePhoto object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easier if developer decides to change the path of the default photo, or the properties of the ProfilePhotoclass.</p>
+</li>
+<li>
+<p>Cons: Creating a new object each time might be highly memory-consuming, but probably insignificant on a modern PC.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort-the-student-list-code-sort-code-2"><a class="link" href="#sort-the-student-list-code-sort-code-2">Sort the student list: <code>sort</code></a></h3>
 <div class="paragraph">
 <p>Sort the student list by alphabetical order.<br>
 Format: <code>sort</code></p>
@@ -833,4 +446,4 @@ Format: <code>sort</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 13:32:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:00:37 UTC</div></div></div></body></html>
