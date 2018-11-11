@@ -423,10 +423,73 @@ Format: <code>sort</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-the-student-list-code-sort-code-2"><a class="link" href="#sort-the-student-list-code-sort-code-2">Sort the student list: <code>sort</code></a></h3>
+<h3 id="sort-mechanism"><a class="link" href="#sort-mechanism">Sort mechanism</a></h3>
 <div class="paragraph">
-<p>Sort the student list by alphabetical order.<br>
-Format: <code>sort</code></p>
+<p>The sort mechanism is reliant on the logic component.
+The primary sorting algorithm is contained in the 'UniquePersonList' class. It is implemented easily by using a 'Person' comparator.</p>
+</div>
+<div class="paragraph">
+<p>The 'indicateAddressBookChanged' event is raised by 'Model' after the sorting is done to show that the Address Book has been modified.</p>
+</div>
+<div class="paragraph">
+<p>The sequence diagram below illustrates how the sort mechanism works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SortUMLSequenceDiagram.png" alt="SortUMLSequenceDiagram" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User executes the <code>sort</code> command which is then parsed through <code>AddressBookParser</code>.</p>
+</li>
+<li>
+<p>A new <code>sort</code> command is created and it then executes the <code>sort</code> method in <code>ModelManager</code>.</p>
+</li>
+<li>
+<p><code>ModelManager</code> calls the internal sorting function in the <code>UniquePersonList</code> class and the person list is sorted.</p>
+</li>
+<li>
+<p>Lastly, the <code>updateFilteredPersonList()</code> method in <code>ModelManager</code> is called and it then returns the result.</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-implementation-of-code-sortcommand-code"><a class="link" href="#aspect-implementation-of-code-sortcommand-code">Aspect: Implementation of <code>SortCommand</code></a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Only sorts by names of persons in the Address Book.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement and more intuitive for the user.</p>
+</li>
+<li>
+<p>Cons: Functionality is limited and may not satisfy the demands of the user.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Sorts persons in the Address Book by any field (e.g. sorting by email or tag), which is given as an input by the user.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More flexibility for the user since he has the option to sort contacts using more fields.</p>
+</li>
+<li>
+<p>Cons: Harder to implement and constant updating of code is required every time a new field in the <code>Person</code> class is introduced.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -446,4 +509,4 @@ Format: <code>sort</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:00:37 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-11 14:38:45 UTC</div></div></div></body></html>
