@@ -33,8 +33,8 @@
 <li><a href="#sort-mechanism">3.2. Sort mechanism</a></li>
 <li><a href="#add-profile-photo-feature">3.3. Add Profile Photo feature</a></li>
 <li><a href="#delete-profile-photo-feature">3.4. Delete Profile Photo feature</a></li>
-<li><a href="#assignment-data-structure">3.5. Assignment data structure</a></li>
-<li><a href="#attendance-data-structure">3.6. Attendance data structure</a></li>
+<li><a href="#assignment-and-attendance-data-structure">3.5. Assignment and Attendance data structure</a></li>
+<li><a href="#edit-assignment-feature">3.6. Edit Assignment Feature</a></li>
 <li><a href="#ui-model-binding-of-student-details">3.7. UI-Model binding of student details</a></li>
 <li><a href="#note-data-structure">3.8. Note data structure</a></li>
 <li><a href="#assignment-statistics-feature">3.9. Assignment Statistics feature</a></li>
@@ -90,8 +90,9 @@
 <li><a href="#adding-a-note">G.4. Adding a note</a></li>
 <li><a href="#deleting-a-note">G.5. Deleting a note</a></li>
 <li><a href="#editing-a-note">G.6. Editing a note</a></li>
-<li><a href="#testing-assignment-statistics">G.7. Testing Assignment Statistics</a></li>
-<li><a href="#testing-class-statistics">G.8. Testing Class Statistics</a></li>
+<li><a href="#testing-assignment-manipulation">G.7. Testing Assignment Manipulation</a></li>
+<li><a href="#testing-assignment-statistics">G.8. Testing Assignment Statistics</a></li>
+<li><a href="#testing-class-statistics">G.9. Testing Class Statistics</a></li>
 </ul>
 </li>
 </ul>
@@ -1050,16 +1051,23 @@ The primary sorting algorithm is contained in the 'UniquePersonList' class. It i
 </div>
 </div>
 <div class="sect2">
-<h3 id="assignment-data-structure"><a class="link" href="#assignment-data-structure">3.5. Assignment data structure</a></h3>
+<h3 id="assignment-and-attendance-data-structure"><a class="link" href="#assignment-and-attendance-data-structure">3.5. Assignment and Attendance data structure</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
+</div>
+</div>
+<div class="sect3">
+<h4 id="assignment-data-structure"><a class="link" href="#assignment-data-structure">3.5.1. Assignment data structure</a></h4>
 <div class="paragraph">
 <p>Global information about assignment is stored in addressbook level and
 each assignment have a uniqueId that will not change when the assignment is edited.
 Also every student store a map with assignment uniqueId as key and mark obtained as value.</p>
 </div>
-<div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.5.1. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-assignment-operations"><a class="link" href="#aspect-data-structure-to-support-assignment-operations">Aspect: Data Structure to support assignment operations</a></h5>
+<h5 id="design-considerations-5"><a class="link" href="#design-considerations-5">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-data-structure-to-support-assignment-operations"><a class="link" href="#aspect-data-structure-to-support-assignment-operations">Aspect: Data Structure to support assignment operations</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -1095,24 +1103,19 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="attendance-data-structure"><a class="link" href="#attendance-data-structure">3.6. Attendance data structure</a></h3>
+<div class="sect3">
+<h4 id="attendance-data-structure"><a class="link" href="#attendance-data-structure">3.5.2. Attendance data structure</a></h4>
 <div class="paragraph">
 <p>Provides a representation of an attendance session for a particular date.
 This enables a mapping between each student and multiple attendance sessions
 with a record of attendance/absence for that session.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
-</div>
-<div class="title">Figure 10. Structure of the Model Component including the Attendance data structure</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.6.1. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-attendance-operations"><a class="link" href="#aspect-data-structure-to-support-attendance-operations">Aspect: Data Structure to support attendance operations</a></h5>
+<h5 id="design-considerations-6"><a class="link" href="#design-considerations-6">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-data-structure-to-support-attendance-operations"><a class="link" href="#aspect-data-structure-to-support-attendance-operations">Aspect: Data Structure to support attendance operations</a></h6>
 <div class="ulist">
+<div class="title">Structure of the Model Component including the Attendance data structure</div>
 <ul>
 <li>
 <p><strong>Alternative 1 (current choice):</strong> Adaptation of Assignment model, using a HashMap for each student to record the attendance/absence
@@ -1145,6 +1148,44 @@ The Attendance session date is represented with the Deadline class from the Assi
 </ul>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-assignment-feature"><a class="link" href="#edit-assignment-feature">3.6. Edit Assignment Feature</a></h3>
+<div class="paragraph">
+<p>This is a feature to let user edit an assignment name, weight, maximum mark, and deadline.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>editAssignment</code> command works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EditAssignmentCommandSequenceDiagram.png" alt="EditAssignmentCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the <code>editAssignment INDEX [n/ASSIGNMENTNAME] [w/WEIGTH] [d/DEADLINE] [m/MAXMARK]</code> command, with
+parameters <code>INDEX</code> and optional parameters <code>ASSIGNMENTNAME</code>, <code>WEIGHT</code>, <code>DEADLINE</code>, <code>MAXMARK</code>.</p>
+</li>
+<li>
+<p>The <code>AddressBookParser</code> class parses the command to create a new <code>EditAssignmentCommand</code> class.</p>
+</li>
+<li>
+<p>The <code>getFilteredAssignmentList</code> command is executed and handled by the <code>ModelManager</code> class.</p>
+</li>
+<li>
+<p>A new <code>Assignment</code> object is created by <code>createEditedAssignment</code> command, using information parsed from parser.</p>
+</li>
+<li>
+<p>The new <code>Assignment</code> is attached to the <code>Model</code> at <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The new assignment information will now stored.</p>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
@@ -1200,7 +1241,7 @@ text in the <code>Note</code> and <strong>newText</strong> refers to the final t
 <div class="content">
 <img src="images/NoteTextAdditionActivityDiagram.png" alt="NoteTextAdditionActivityDiagram" width="800">
 </div>
-<div class="title">Figure 11. Activity Diagram for Text Addition</div>
+<div class="title">Figure 10. Activity Diagram for Text Addition</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1279,7 +1320,7 @@ similar in both <code>delnote</code> and <code>editnote</code>, they implement t
 <div class="content">
 <img src="images/EditNoteFeatureClassDiagram.png" alt="EditNoteFeatureClassDiagram" width="800">
 </div>
-<div class="title">Figure 12. Structure of Note commands (only classes closely related to EditNoteCommand shown)</div>
+<div class="title">Figure 11. Structure of Note commands (only classes closely related to EditNoteCommand shown)</div>
 </div>
 <div class="paragraph">
 <p>An example of how the <code>editnote</code> command would work is depicted in the sequence diagram below. <code>NoteCommand</code> is
@@ -1289,7 +1330,7 @@ minimally represented for brevity.</p>
 <div class="content">
 <img src="images/EditNoteCommandSequenceDiagram.png" alt="EditNoteCommandSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 13. Sequence Diagram of EditNoteCommand executing (only relevant methods are shown)</div>
+<div class="title">Figure 12. Sequence Diagram of EditNoteCommand executing (only relevant methods are shown)</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1372,7 +1413,7 @@ The median, 25th, and 75th percentiles are calculated by indexing a sorted array
 <div class="content">
 <img src="images/AssignmentStatsSequenceDiagram.png" alt="AssignmentStatsSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 14. Sequence diagram of the Assignment Statistics feature</div>
+<div class="title">Figure 13. Sequence diagram of the Assignment Statistics feature</div>
 </div>
 </div>
 <div class="sect3">
@@ -1428,7 +1469,7 @@ The median, 25th, and 75th percentiles are calculated by indexing a sorted array
 <div class="content">
 <img src="images/ClassStatsSequenceDiagram.png" alt="ClassStatsSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 15. Sequence diagram of the Class Statistics feature</div>
+<div class="title">Figure 14. Sequence diagram of the Class Statistics feature</div>
 </div>
 </div>
 <div class="sect3">
@@ -1484,7 +1525,7 @@ The total grade for the student is calculated as a weighted sum of the marks for
 <div class="content">
 <img src="images/grade_display.png" alt="grade display" width="800">
 </div>
-<div class="title">Figure 16. Grade Display</div>
+<div class="title">Figure 15. Grade Display</div>
 </div>
 </div>
 <div class="sect3">
@@ -1629,7 +1670,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 16. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -3248,7 +3289,97 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="testing-assignment-statistics"><a class="link" href="#testing-assignment-statistics">G.7. Testing Assignment Statistics</a></h3>
+<h3 id="testing-assignment-manipulation"><a class="link" href="#testing-assignment-manipulation">G.7. Testing Assignment Manipulation</a></h3>
+<div class="paragraph">
+<p>Optional Prerequisite: There is at least 1 person recorded in the application to view assignments in the gui.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding an assignment to the application</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Application currently do not have an assignment with the same name.</p>
+</li>
+<li>
+<p>Test case: <code>addAssignment n/Assignment1 w/15 d/31/12/2019 m/100</code><br>
+Expected: New assignment called "Assignment1" is added to the application, if you select a student,
+Assignment1 will appear on the MoreDetailsPanel on the right of student list.</p>
+</li>
+<li>
+<p>Test case: <code>addAssignment n/Assignment2 w/a d/31/12/2019 m/100</code><br>
+Expected: Error message appear: weight must be a real number.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Deleting an assignment</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There is at least 1 assignment stored in the application.</p>
+</li>
+<li>
+<p>Test case: <code>deleteAssignment 1</code><br>
+Expected: The first assignment on the assignment list will be deleted.</p>
+</li>
+<li>
+<p>Test case: <code>deleteAssignment asdf</code><br>
+Expected: <code>Invalid command format</code> error.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Editing an assignment</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There is at least 1 assignment stored in the application. There is no assignment with the name
+"Assignment2"</p>
+</li>
+<li>
+<p>Test case: <code>editAssignment 1 n/Assignment2 w/30</code><br>
+Expected: the first assignment&#8217;s name in the assignment list changed to "Assignment2" and its weight changed to 30.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Marking a person</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There is at least 2 person and 1 assignment stored.</p>
+</li>
+<li>
+<p>Test case: <code>markAssignment 2 id/1 m/30</code><br>
+Expected: second person in the list have his/her mark stored for first assignment. He/She got 30 marks for it.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Sorting assignments</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There is at least 2 assignment and not ordered from oldest to latest by deadline.</p>
+</li>
+<li>
+<p>Test case: <code>sortAssignment</code><br>
+Expected: the assignments are all sorted by deadline and if they have same deadline, then by name.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="testing-assignment-statistics"><a class="link" href="#testing-assignment-statistics">G.8. Testing Assignment Statistics</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3311,7 +3442,7 @@ Expected: Statistics data is accurate according to the marks.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="testing-class-statistics"><a class="link" href="#testing-class-statistics">G.8. Testing Class Statistics</a></h3>
+<h3 id="testing-class-statistics"><a class="link" href="#testing-class-statistics">G.9. Testing Class Statistics</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3374,4 +3505,4 @@ Expected: Statistics data is accurate according to the total marks of the studen
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:34:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 17:35:09 UTC</div></div></div></body></html>

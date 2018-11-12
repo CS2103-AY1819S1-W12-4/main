@@ -14,7 +14,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>This project portfolio was written to document my role and contributions to the <strong>EazyTutors</strong> project. I was responsible for creating 'Assignment' related commands and back end.</p>
+<p>This project portfolio was written to document my role and contributions to the <strong>EazyTutors</strong> project. I was responsible for creating <code>Assignment</code> related commands and the data structures supporting it.</p>
 </li>
 </ul>
 </div>
@@ -92,14 +92,29 @@
 <li>
 <p>Highlights: Added assignment can be sorted by deadline.</p>
 </li>
-<li>
-<p>Credits:</p>
-</li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&amp;search=HenryJk">Project Code
+Dashboard</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added implementation details of <code>Assignment</code> data structure to Developer Guide.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -189,16 +204,23 @@ Format: <code>markAssignment STUDENT_INDEX id/ASSIGNMENT_INDEX m/MARK</code></p>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="assignment-data-structure"><a class="link" href="#assignment-data-structure">Assignment data structure</a></h3>
+<h3 id="assignment-and-attendance-data-structure"><a class="link" href="#assignment-and-attendance-data-structure">Assignment and Attendance data structure</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
+</div>
+</div>
+<div class="sect3">
+<h4 id="assignment-data-structure"><a class="link" href="#assignment-data-structure">Assignment data structure</a></h4>
 <div class="paragraph">
 <p>Global information about assignment is stored in addressbook level and
 each assignment have a uniqueId that will not change when the assignment is edited.
 Also every student store a map with assignment uniqueId as key and mark obtained as value.</p>
 </div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-assignment-operations"><a class="link" href="#aspect-data-structure-to-support-assignment-operations">Aspect: Data Structure to support assignment operations</a></h5>
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="aspect-data-structure-to-support-assignment-operations"><a class="link" href="#aspect-data-structure-to-support-assignment-operations">Aspect: Data Structure to support assignment operations</a></h6>
 <div class="ulist">
 <ul>
 <li>
@@ -234,6 +256,44 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="edit-assignment-feature"><a class="link" href="#edit-assignment-feature">Edit Assignment Feature</a></h3>
+<div class="paragraph">
+<p>This is a feature to let user edit an assignment name, weight, maximum mark, and deadline.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>editAssignment</code> command works</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EditAssignmentCommandSequenceDiagram.png" alt="EditAssignmentCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The user executes the <code>editAssignment INDEX [n/ASSIGNMENTNAME] [w/WEIGTH] [d/DEADLINE] [m/MAXMARK]</code> command, with
+parameters <code>INDEX</code> and optional parameters <code>ASSIGNMENTNAME</code>, <code>WEIGHT</code>, <code>DEADLINE</code>, <code>MAXMARK</code>.</p>
+</li>
+<li>
+<p>The <code>AddressBookParser</code> class parses the command to create a new <code>EditAssignmentCommand</code> class.</p>
+</li>
+<li>
+<p>The <code>getFilteredAssignmentList</code> command is executed and handled by the <code>ModelManager</code> class.</p>
+</li>
+<li>
+<p>A new <code>Assignment</code> object is created by <code>createEditedAssignment</code> command, using information parsed from parser.</p>
+</li>
+<li>
+<p>The new <code>Assignment</code> is attached to the <code>Model</code> at <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The new assignment information will now stored.</p>
+</li>
+</ol>
+</div>
+</div>
 <div class="sect2">
 <h3 id="proposed-enhancement-for-v2-0-2"><a class="link" href="#proposed-enhancement-for-v2-0-2">Proposed Enhancement for v2.0</a></h3>
 <div class="ulist">
@@ -248,4 +308,4 @@ edit assignment information in every single student.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 15:34:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 17:35:09 UTC</div></div></div></body></html>
