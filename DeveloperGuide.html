@@ -90,7 +90,8 @@
 <li><a href="#adding-a-note">G.4. Adding a note</a></li>
 <li><a href="#deleting-a-note">G.5. Deleting a note</a></li>
 <li><a href="#editing-a-note">G.6. Editing a note</a></li>
-<li><a href="#saving-data">G.7. Saving data</a></li>
+<li><a href="#testing-assignment-statistics">G.7. Testing Assignment Statistics</a></li>
+<li><a href="#testing-class-statistics">G.8. Testing Class Statistics</a></li>
 </ul>
 </li>
 </ul>
@@ -3247,24 +3248,130 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.7. Saving data</a></h3>
+<h3 id="testing-assignment-statistics"><a class="link" href="#testing-assignment-statistics">G.7. Testing Assignment Statistics</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Dealing with missing/corrupted data files</p>
+<p>Statistics of assignment with no marks entered</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+<p>Prerequisites: Students list not empty. Assignment list contains assignments with no marks entered for any student.</p>
+</li>
+<li>
+<p>Test case: <code>assignmentStats 1</code><br>
+Expected: Statistics data is all 0.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Statistics of assignment after student with marks deleted</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Students list contains 1 student with marks for an assignment.</p>
+</li>
+<li>
+<p>Test case: <code>delete 1</code> <code>assignmentStats 1</code><br>
+Expected: Statistics data is all 0 because marks are deleted along with the student.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Statistics of deleted assignment</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Assignment list contains an assignment to be deleted.</p>
+</li>
+<li>
+<p>Test case: <code>deleteAssignment 1</code> <code>assignmentStats 1</code><br>
+Expected: Assignment is no longer accessible, invalid index or index refers to other assignment.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Statistics of assignment with marks entered</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Students list not empty. Assignment list contains an assignment with marks entered for any student.</p>
+</li>
+<li>
+<p>Test case: <code>assignmentStats 1</code><br>
+Expected: Statistics data is accurate according to the marks.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="testing-class-statistics"><a class="link" href="#testing-class-statistics">G.8. Testing Class Statistics</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Statistics of class with no students and no assignments</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Students list and assignment list is empty.</p>
+</li>
+<li>
+<p>Test case: <code>classStats</code><br>
+Expected: Statistics data is all 0.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Statistics of class with students but no assignments</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Students list contains students but no assignments.</p>
+</li>
+<li>
+<p>Test case: <code>classStats</code><br>
+Expected: Statistics shows the number of students, other data is all 0.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Statistics of class with students and assignments but no marks entered</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Students list not empty. Assignment list contains assignments with no marks entered for any student.</p>
+</li>
+<li>
+<p>Test case: <code>classStats</code><br>
+Expected: Statistics shows the number of students and the maximum grade is the total weight of the assignments, other data is all 0.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Statistics of class with students and assignments with marks entered</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Students list not empty. Assignment list contains assignments with marks entered for students.</p>
+</li>
+<li>
+<p>Test case: <code>classStats</code><br>
+Expected: Statistics data is accurate according to the total marks of the students.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:52:13 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 12:27:14 UTC</div></div></div></body></html>
