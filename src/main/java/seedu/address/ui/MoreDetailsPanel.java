@@ -61,6 +61,7 @@ public class MoreDetailsPanel extends UiPart<Region> {
         registerAsAnEventHandler(this);
         this.studentList = listOfStudents;
         this.assignmentList = listOfAssignments;
+        this.attendanceList = listOfAttendance;
 
         // default label
         showDefaultLabel();
