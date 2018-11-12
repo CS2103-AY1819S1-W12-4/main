@@ -4,6 +4,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.assignment.Assignment;
+import seedu.address.model.attendance.Attendance;
 import seedu.address.model.person.Person;
 
 /**
@@ -80,6 +81,9 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
 
+    /** Returns an unmodifiable view of the attendance list */
+    ObservableList<Attendance> getFilteredAttendanceList();
+
     /** Sorts the persons in the AddressBook lexicographically */
     void sort();
 
@@ -116,4 +120,15 @@ public interface Model {
      * Saves the current address book state for undo/redo.
      */
     void commitAddressBook();
+
+    /**
+     * Returns true if an lesson with the same identity as {@code assignment} exists in the address book.
+     */
+    boolean hasAttendance(Attendance attendance);
+
+    /**
+     * Adds the given lesson.
+     * {@code lesson} must not already exist in the address book.
+     */
+    void addAttendance(Attendance attendance);
 }
