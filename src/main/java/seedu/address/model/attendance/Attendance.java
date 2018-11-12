@@ -35,11 +35,17 @@ public class Attendance implements Comparable<Attendance> {
         );
     }
 
-    public Session getSession() { return name; }
+    public Session getSession() {
+        return name;
+    }
 
-    public SessionDate getDate() { return date; }
+    public SessionDate getDate() {
+        return date;
+    }
 
-    public AttendanceMark getPresence() { return presence; }
+    public AttendanceMark getPresence() {
+        return presence;
+    }
 
     public String getUniqueId() {
         return uniqueId;

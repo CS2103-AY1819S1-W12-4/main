@@ -18,7 +18,12 @@ import seedu.address.model.Model;
 import seedu.address.model.attendance.Attendance;
 import seedu.address.model.attendance.AttendanceMark;
 import seedu.address.model.common.Mark;
-import seedu.address.model.person.*;
+import seedu.address.model.person.Address;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.person.ProfilePhoto;
 import seedu.address.model.tag.Tag;
 
 /**
