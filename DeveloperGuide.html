@@ -86,7 +86,11 @@
 <ul class="sectlevel2">
 <li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
 <li><a href="#deleting-a-person">G.2. Deleting a person</a></li>
-<li><a href="#saving-data">G.3. Saving data</a></li>
+<li><a href="#adding-a-person">G.3. Adding a person</a></li>
+<li><a href="#adding-a-note">G.4. Adding a note</a></li>
+<li><a href="#deleting-a-note">G.5. Deleting a note</a></li>
+<li><a href="#editing-a-note">G.6. Editing a note</a></li>
+<li><a href="#saving-data">G.7. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -1187,9 +1191,6 @@ return a new <code>Note</code> object with the new <code>text</code>.</p>
 the user, unless the user ends the text with <code>!</code> or <code>?</code>. When a <code>note</code> or <code>editnote</code> command is executed on a <code>Note</code>
 that already has text, the previous text&#8217;s punctuation is changed to a comma (<code>,</code>) instead before being added to the
 final <code>text</code>.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p>The workflow for this algorithm is shown below. <strong>Text</strong> refers to the text being added, <strong>noteText</strong> refers to the existing
 text in the <code>Note</code> and <strong>newText</strong> refers to the final text in the newly created <code>Note</code>.</p>
@@ -1225,17 +1226,17 @@ input.</p>
 </li>
 <li>
 <p>Developers have to manually add special characters to be checked for.</p>
-<div class="ulist">
-<ul>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p><strong>Alternative 2:</strong> No editing of <code>Note</code> text, <code>text</code> will be whatever the user inputs.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
+<div class="ulist">
+<ul>
 <li>
 <p>Pros:<br></p>
 <div class="ulist">
@@ -1261,18 +1262,18 @@ input.</p>
 </li>
 </ul>
 </div>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect4">
 <h5 id="aspect-edit-note-implementation"><a class="link" href="#aspect-edit-note-implementation">Aspect: Edit note implementation</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Delete the note before adding it using <code>note</code> command. As deleting the note is
+<p><strong>Alternative 1 (current choice):</strong> Delete the note, before adding it using <code>note</code> command. As deleting the note is
 similar in both <code>delnote</code> and <code>editnote</code>, they implement the <code>NoteDeleter</code> interface with has a default method
 <code>copyWithoutNote</code> to reduce repeated code.</p>
-</li>
-</ul>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/EditNoteFeatureClassDiagram.png" alt="EditNoteFeatureClassDiagram" width="800">
@@ -1280,7 +1281,14 @@ similar in both <code>delnote</code> and <code>editnote</code>, they implement t
 <div class="title">Figure 12. Structure of Note commands (only classes closely related to EditNoteCommand shown)</div>
 </div>
 <div class="paragraph">
-<p>An example of how the <code>editnote</code> command would work is depicted in the sequence diagram below.</p>
+<p>An example of how the <code>editnote</code> command would work is depicted in the sequence diagram below. <code>NoteCommand</code> is
+minimally represented for brevity.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EditNoteCommandSequenceDiagram.png" alt="EditNoteCommandSequenceDiagram" width="800">
+</div>
+<div class="title">Figure 13. Sequence Diagram of EditNoteCommand executing (only relevant methods are shown)</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1306,6 +1314,9 @@ similar in both <code>delnote</code> and <code>editnote</code>, they implement t
 </li>
 <li>
 <p>Dependency between <code>EditNoteCommand</code> and <code>NoteCommand</code>.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1360,7 +1371,7 @@ The median, 25th, and 75th percentiles are calculated by indexing a sorted array
 <div class="content">
 <img src="images/AssignmentStatsSequenceDiagram.png" alt="AssignmentStatsSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 13. Sequence diagram of the Assignment Statistics feature</div>
+<div class="title">Figure 14. Sequence diagram of the Assignment Statistics feature</div>
 </div>
 </div>
 <div class="sect3">
@@ -1416,7 +1427,7 @@ The median, 25th, and 75th percentiles are calculated by indexing a sorted array
 <div class="content">
 <img src="images/ClassStatsSequenceDiagram.png" alt="ClassStatsSequenceDiagram" width="800">
 </div>
-<div class="title">Figure 14. Sequence diagram of the Class Statistics feature</div>
+<div class="title">Figure 15. Sequence diagram of the Class Statistics feature</div>
 </div>
 </div>
 <div class="sect3">
@@ -1472,7 +1483,7 @@ The total grade for the student is calculated as a weighted sum of the marks for
 <div class="content">
 <img src="images/grade_display.png" alt="grade display" width="800">
 </div>
-<div class="title">Figure 15. Grade Display</div>
+<div class="title">Figure 16. Grade Display</div>
 </div>
 </div>
 <div class="sect3">
@@ -1617,7 +1628,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="content">
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
-<div class="title">Figure 16. Saving documentation as PDF files in Chrome</div>
+<div class="title">Figure 17. Saving documentation as PDF files in Chrome</div>
 </div>
 </div>
 <div class="sect2">
@@ -3062,9 +3073,6 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
 </div>
 <div class="sect2">
 <h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">G.2. Deleting a person</a></h3>
@@ -3079,14 +3087,16 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
+Timestamp in the status bar is updated.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
 Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size), <code>delete -1</code>
+(where index should not be negative)<br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
@@ -3094,12 +3104,150 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+<div class="sect2">
+<h3 id="adding-a-person"><a class="link" href="#adding-a-person">G.3. Adding a person</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a person to the current list</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: No student already exists in the student list with the same name. If there is an index specified, it
+must be a positive integer lesser than the current size of the student list + 1.</p>
+</li>
+<li>
+<p>Test case: <code>add n/John Doe p/67891234 e/johnd@gmail.com a/Parliament House t/friend s/2</code><br>
+Expected: Student with name "John Doe" added to 2nd index of list. Details of the added student shown in the status
+message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>add n/John Doe</code><br>
+Expected: Student with name "John Doe" added to bottom of list, all other details are empty. Details of the added
+student shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>add n/John Doe s/1</code><br>
+Expected: Similar to previous, except the student is now added to the top of the list.</p>
+</li>
+<li>
+<p>Test case: <code>add n/ p/98765432 e/test@example.com</code><br>
+Expected: No person is added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect add commands to try: <code>add n/John Doe p/99</code>, <code>add n/John Doe t/good friend, `add n/John Doe e/test</code>
+(commands where the parameters used are invalid)</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
+<h3 id="adding-a-note"><a class="link" href="#adding-a-note">G.4. Adding a note</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding a note to a student</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There must be a student at the index specified. The index must be a positive integer.</p>
+</li>
+<li>
+<p>Test case: <code>note 1 test</code><br>
+Expected: If the first student had no note, his note as displayed at the bottom right is now <code>test.</code>, else, <code>test.</code>
+is added to back of his existing note, with the full-stop of existing note changed to a comma. Details of student
+to whom the note was added is shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>note 2 great!</code><br>
+Expected: Similar to previous, except the note ends with an exclamation mark instead.</p>
+</li>
+<li>
+<p>Test case: <code>note 1  test2</code><br>
+Expected: No note is added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect note commands to try: <code>note 1test</code>, <code>note  1 test</code> (where the format is incorrect)
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-note"><a class="link" href="#deleting-a-note">G.5. Deleting a note</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a note of a student</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Student at specified index must have an existing note.</p>
+</li>
+<li>
+<p>Test case: <code>delnote 1</code><br>
+Expected: Note of first student is deleted. Details of the student whose note was deleted shown in the status
+message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>delnote 0</code><br>
+Expected: No note is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delnote</code>, <code>delnote x</code> (where x is larger than the list size), <code>delnote -1</code>
+(where index should not be negative)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-note"><a class="link" href="#editing-a-note">G.6. Editing a note</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Editing a student&#8217;s note</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Student at specified index must have an existing note.</p>
+</li>
+<li>
+<p>Test case: <code>editnote 1 test?</code><br>
+Expected: New note <code>test?</code> displayed on bottom right of window. Details of student whose note was edited shown in the
+status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>editnote 2 might need more help on recursion.</code><br>
+Expected: Similar to previous, except the note ends with a full-stop instead.</p>
+</li>
+<li>
+<p>Test case: <code>editnote 1  test2</code><br>
+Expected: No change to the note. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect note commands to try: <code>editnote 2inquisitive</code>, <code>note  1 consult at 2pm</code> (where the format is
+incorrect)<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">G.7. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3119,4 +3267,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 10:45:53 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-12 11:52:13 UTC</div></div></div></body></html>
