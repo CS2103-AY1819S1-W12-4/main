@@ -25,21 +25,23 @@
 <li><a href="#undoing-previous-command-code-undo-code">3.10. Undoing previous command : <code>undo</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code">3.11. Redoing the previously undone command : <code>redo</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">3.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#mark-a-student-s-attendance-as-present-code-attend-code">3.13. Mark a student&#8217;s attendance as present: <code>attend</code></a></li>
-<li><a href="#mark-a-student-s-attendance-as-absent-code-unattend-code-coming-in-v2-0">3.14. Mark a student&#8217;s attendance as absent: <code>unattend</code> {Coming in v2.0}</a></li>
-<li><a href="#sort-the-student-list-code-sort-code">3.15. Sort the student list: <code>sort</code></a></li>
-<li><a href="#add-an-assignment-code-addassignment-code">3.16. Add an assignment: <code>addAssignment</code></a></li>
-<li><a href="#delete-an-assignment-code-deleteassignment-code">3.17. Delete an assignment: <code>deleteAssignment</code></a></li>
-<li><a href="#edit-an-assignment-code-editassignment-code">3.18. Edit an assignment: <code>editAssignment</code></a></li>
-<li><a href="#sort-all-assignment-code-sortassignment-code">3.19. Sort all assignment: <code>sortAssignment</code></a></li>
-<li><a href="#record-a-mark-for-a-student-code-markassignment-code">3.20. Record a mark for a student: <code>markAssignment</code></a></li>
-<li><a href="#display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code">3.21. Display the statistics for the marks of an assignment: <code>assignmentStats</code></a></li>
-<li><a href="#display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code">3.22. Display the statistics for the total grades of the students in the class: <code>classStats</code></a></li>
-<li><a href="#editing-a-student-code-edit-code">3.23. Editing a student: <code>edit</code></a></li>
-<li><a href="#viewing-command-history-code-history-code">3.24. Viewing command history : <code>history</code></a></li>
-<li><a href="#add-a-note-about-a-student-code-note-code">3.25. Add a note about a student : <code>note</code></a></li>
-<li><a href="#delete-a-student-s-note-code-delnote-code">3.26. Delete a student&#8217;s note : <code>delnote</code></a></li>
-<li><a href="#edits-the-note-of-a-student-code-editnote-code">3.27. Edits the note of a student : <code>editnote</code></a></li>
+<li><a href="#add-a-lesson-code-addlesson-code">3.13. Add a lesson: <code>addLesson</code></a></li>
+<li><a href="#mark-a-student-s-attendance-code-attend-code">3.14. Mark a student&#8217;s attendance: <code>attend</code></a></li>
+<li><a href="#delete-a-session-code-deleteattendance-code">3.15. Delete a session: <code>deleteAttendance</code></a></li>
+<li><a href="#edit-a-session-code-editlesson-code">3.16. Edit a session: <code>editLesson</code></a></li>
+<li><a href="#sort-the-student-list-code-sort-code">3.17. Sort the student list: <code>sort</code></a></li>
+<li><a href="#add-an-assignment-code-addassignment-code">3.18. Add an assignment: <code>addAssignment</code></a></li>
+<li><a href="#delete-an-assignment-code-deleteassignment-code">3.19. Delete an assignment: <code>deleteAssignment</code></a></li>
+<li><a href="#edit-an-assignment-code-editassignment-code">3.20. Edit an assignment: <code>editAssignment</code></a></li>
+<li><a href="#sort-all-assignment-code-sortassignment-code">3.21. Sort all assignment: <code>sortAssignment</code></a></li>
+<li><a href="#record-a-mark-for-a-student-code-markassignment-code">3.22. Record a mark for a student: <code>markAssignment</code></a></li>
+<li><a href="#display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code">3.23. Display the statistics for the marks of an assignment: <code>assignmentStats</code></a></li>
+<li><a href="#display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code">3.24. Display the statistics for the total grades of the students in the class: <code>classStats</code></a></li>
+<li><a href="#editing-a-student-code-edit-code">3.25. Editing a student: <code>edit</code></a></li>
+<li><a href="#viewing-command-history-code-history-code">3.26. Viewing command history : <code>history</code></a></li>
+<li><a href="#add-a-note-about-a-student-code-note-code">3.27. Add a note about a student : <code>note</code></a></li>
+<li><a href="#delete-a-student-s-note-code-delnote-code">3.28. Delete a student&#8217;s note : <code>delnote</code></a></li>
+<li><a href="#edits-the-note-of-a-student-code-editnote-code">3.29. Edits the note of a student : <code>editnote</code></a></li>
 </ul>
 </li>
 <li><a href="#command-summary">4. Command Summary</a></li>
@@ -473,63 +475,184 @@ Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="mark-a-student-s-attendance-as-present-code-attend-code"><a class="link" href="#mark-a-student-s-attendance-as-present-code-attend-code">3.13. Mark a student&#8217;s attendance as present: <code>attend</code></a></h3>
+<h3 id="add-a-lesson-code-addlesson-code"><a class="link" href="#add-a-lesson-code-addlesson-code">3.13. Add a lesson: <code>addLesson</code></a></h3>
 <div class="paragraph">
-<p>Records the attendance of a student as present for a specified class.<br>
-Format: <code>attend INDEX at/CLASSNAME</code></p>
+<p>Adds a lesson to the list of lessons in the address book. <br>
+Format: <code>addLesson n/NAME d/DATE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a lesson to all students in the class (i.e the students is the address book),
+with the name of the lesson, NAME and when the session was held, DATE.</p>
+</li>
+<li>
+<p><code>NAME</code> should be a String.</p>
+</li>
+<li>
+<p><code>DATE</code> should follow the format DD/MM/YYYY.</p>
+</li>
+<li>
+<p>Cannot be undone/redone.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/addLesson.png" alt="addLesson" width="800">
+</div>
+<div class="title">Figure 1. Add Lesson</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="mark-a-student-s-attendance-as-absent-code-unattend-code-coming-in-v2-0"><a class="link" href="#mark-a-student-s-attendance-as-absent-code-unattend-code-coming-in-v2-0">3.14. Mark a student&#8217;s attendance as absent: <code>unattend</code> {Coming in v2.0}</a></h3>
+<h3 id="mark-a-student-s-attendance-code-attend-code"><a class="link" href="#mark-a-student-s-attendance-code-attend-code">3.14. Mark a student&#8217;s attendance: <code>attend</code></a></h3>
 <div class="paragraph">
-<p>Records the attendance of a student as absent for a specified class.<br>
-Format: <code>unattend INDEX at/CLASSNAME</code></p>
+<p>Creates an attendance entry for the person identified by the index number used in the displayed person list.<br>
+Format: <code>attend INDEX id/SESSION_INDEX at/ATTENDANCE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Marks a student&#8217;s attendance, ATTENDANCE as 1, for present, 0 for absent, given the index of the student in the address book, INDEX, index of the lesson, SESSION_INDEX</p>
+</li>
+<li>
+<p><code>INDEX</code> should be a positive integer.</p>
+</li>
+<li>
+<p><code>SESSION_INDEX</code> should be a positive integer.</p>
+</li>
+<li>
+<p><code>ATTENDANCE</code> should be either 1 or 0.</p>
+</li>
+<li>
+<p>Cannot be undone/redone.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/attend.png" alt="attend" width="800">
+</div>
+<div class="title">Figure 2. Mark Attendance</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-the-student-list-code-sort-code"><a class="link" href="#sort-the-student-list-code-sort-code">3.15. Sort the student list: <code>sort</code></a></h3>
+<h3 id="delete-a-session-code-deleteattendance-code"><a class="link" href="#delete-a-session-code-deleteattendance-code">3.15. Delete a session: <code>deleteAttendance</code></a></h3>
+<div class="paragraph">
+<p>Deletes a lesson from the list of lessons in the address book.<br>
+Format: <code>deleteAttendance id/SESSION_INDEX</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deletes a lesson from the list of lessons in the address book with the input index,
+SESSION_INDEX.</p>
+</li>
+<li>
+<p><code>SESSION_INDEX</code> should be a positive integer.</p>
+</li>
+<li>
+<p>Cannot be undone/redone.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/deleteAttendance.png" alt="deleteAttendance" width="800">
+</div>
+<div class="title">Figure 3. Delete Lesson</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit-a-session-code-editlesson-code"><a class="link" href="#edit-a-session-code-editlesson-code">3.16. Edit a session: <code>editLesson</code></a></h3>
+<div class="paragraph">
+<p>Edits the name and date of an existing lesson.<br>
+Format: <code>editLesson id/SESSION_INDEX n/UPDATED_NAME d/UPDATED_DATE</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edits the name and/or date of an existing lesson in the list of lessons in the
+addressbook, replacing them with UPDATED_NAME and/or UPDATED_DATE respectively.</p>
+</li>
+<li>
+<p><code>UPDATED_NAME</code> should be a String.</p>
+</li>
+<li>
+<p><code>UPDATED_DATE</code> should follow the format DD/MM/YYYY.</p>
+</li>
+<li>
+<p>Cannot be undone/redone.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/editLesson.png" alt="editLesson" width="800">
+</div>
+<div class="title">Figure 4. Edit Lesson</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sort-the-student-list-code-sort-code"><a class="link" href="#sort-the-student-list-code-sort-code">3.17. Sort the student list: <code>sort</code></a></h3>
 <div class="paragraph">
 <p>Sort the student list by alphabetical order.<br>
 Format: <code>sort</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-an-assignment-code-addassignment-code"><a class="link" href="#add-an-assignment-code-addassignment-code">3.16. Add an assignment: <code>addAssignment</code></a></h3>
+<h3 id="add-an-assignment-code-addassignment-code"><a class="link" href="#add-an-assignment-code-addassignment-code">3.18. Add an assignment: <code>addAssignment</code></a></h3>
 <div class="paragraph">
 <p>Adds an assignment with given assignment name, weight, deadline, maximum mark.<br>
 Format: <code>addAssignment n/ASSIGNMENTNAME w/WEIGHT d/DEADLINE m/MAX_MARK</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-an-assignment-code-deleteassignment-code"><a class="link" href="#delete-an-assignment-code-deleteassignment-code">3.17. Delete an assignment: <code>deleteAssignment</code></a></h3>
+<h3 id="delete-an-assignment-code-deleteassignment-code"><a class="link" href="#delete-an-assignment-code-deleteassignment-code">3.19. Delete an assignment: <code>deleteAssignment</code></a></h3>
 <div class="paragraph">
 <p>Delete an assignment with given assignment index.<br>
 Format: <code>deleteAssignment INDEX</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edit-an-assignment-code-editassignment-code"><a class="link" href="#edit-an-assignment-code-editassignment-code">3.18. Edit an assignment: <code>editAssignment</code></a></h3>
+<h3 id="edit-an-assignment-code-editassignment-code"><a class="link" href="#edit-an-assignment-code-editassignment-code">3.20. Edit an assignment: <code>editAssignment</code></a></h3>
 <div class="paragraph">
 <p>Edit an existing assignment with specified informations.
 Format: <code>editAssignment INDEX [n/ASSIGNMENTNAME] [w/WEIGHT] [d/DEADLINE] [m/MAX_MARK]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sort-all-assignment-code-sortassignment-code"><a class="link" href="#sort-all-assignment-code-sortassignment-code">3.19. Sort all assignment: <code>sortAssignment</code></a></h3>
+<h3 id="sort-all-assignment-code-sortassignment-code"><a class="link" href="#sort-all-assignment-code-sortassignment-code">3.21. Sort all assignment: <code>sortAssignment</code></a></h3>
 <div class="paragraph">
 <p>Sort all assignment by deadline.<br>
 Format: <code>sortAssignment</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="record-a-mark-for-a-student-code-markassignment-code"><a class="link" href="#record-a-mark-for-a-student-code-markassignment-code">3.20. Record a mark for a student: <code>markAssignment</code></a></h3>
+<h3 id="record-a-mark-for-a-student-code-markassignment-code"><a class="link" href="#record-a-mark-for-a-student-code-markassignment-code">3.22. Record a mark for a student: <code>markAssignment</code></a></h3>
 <div class="paragraph">
 <p>Adds a mark for an assignment associated with a student given the mark obtained. Can mark more than maxMark in case of bonus score.<br>
 Format: <code>markAssignment STUDENT_INDEX id/ASSIGNMENT_INDEX m/MARK</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code"><a class="link" href="#display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code">3.21. Display the statistics for the marks of an assignment: <code>assignmentStats</code></a></h3>
+<h3 id="display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code"><a class="link" href="#display-the-statistics-for-the-marks-of-an-assignment-code-assignmentstats-code">3.23. Display the statistics for the marks of an assignment: <code>assignmentStats</code></a></h3>
 <div class="paragraph">
 <p>Displays the number of submissions and the maximum, highest, lowest, 25th/75th percentiles, average, and median mark for the specified assignment.<br>
 Format: <code>assignmentStats ASSIGNMENT_INDEX</code></p>
@@ -538,11 +661,11 @@ Format: <code>assignmentStats ASSIGNMENT_INDEX</code></p>
 <div class="content">
 <img src="images/assignment_stats.png" alt="assignment stats" width="800">
 </div>
-<div class="title">Figure 1. Assignment Statistics</div>
+<div class="title">Figure 5. Assignment Statistics</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code"><a class="link" href="#display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code">3.22. Display the statistics for the total grades of the students in the class: <code>classStats</code></a></h3>
+<h3 id="display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code"><a class="link" href="#display-the-statistics-for-the-total-grades-of-the-students-in-the-class-code-classstats-code">3.24. Display the statistics for the total grades of the students in the class: <code>classStats</code></a></h3>
 <div class="paragraph">
 <p>Displays the number of students and the maximum, highest, lowest, 25th/75th percentiles, average, and median total grade.<br>
 Format: <code>classStats</code></p>
@@ -551,11 +674,11 @@ Format: <code>classStats</code></p>
 <div class="content">
 <img src="images/class_stats.png" alt="class stats" width="800">
 </div>
-<div class="title">Figure 2. Class Statistics</div>
+<div class="title">Figure 6. Class Statistics</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.23. Editing a student: <code>edit</code></a></h3>
+<h3 id="editing-a-student-code-edit-code"><a class="link" href="#editing-a-student-code-edit-code">3.25. Editing a student: <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing student in the student list.<br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]&#8230;&#8203;</code></p>
@@ -600,14 +723,14 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-command-history-code-history-code"><a class="link" href="#viewing-command-history-code-history-code">3.24. Viewing command history : <code>history</code></a></h3>
+<h3 id="viewing-command-history-code-history-code"><a class="link" href="#viewing-command-history-code-history-code">3.26. Viewing command history : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-a-note-about-a-student-code-note-code"><a class="link" href="#add-a-note-about-a-student-code-note-code">3.25. Add a note about a student : <code>note</code></a></h3>
+<h3 id="add-a-note-about-a-student-code-note-code"><a class="link" href="#add-a-note-about-a-student-code-note-code">3.27. Add a note about a student : <code>note</code></a></h3>
 <div class="paragraph">
 <p>Attaches a note with specified text to a student in the student list specified by his/her index.<br>
 Format: <code>note INDEX TEXT</code></p>
@@ -665,7 +788,7 @@ Student at 1st index&#8217;s note:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="delete-a-student-s-note-code-delnote-code"><a class="link" href="#delete-a-student-s-note-code-delnote-code">3.26. Delete a student&#8217;s note : <code>delnote</code></a></h3>
+<h3 id="delete-a-student-s-note-code-delnote-code"><a class="link" href="#delete-a-student-s-note-code-delnote-code">3.28. Delete a student&#8217;s note : <code>delnote</code></a></h3>
 <div class="paragraph">
 <p>Deletes the corresponding note of the student at the specified index.<br>
 Format: <code>delnote INDEX</code></p>
@@ -702,9 +825,9 @@ An empty note cannot be deleted!<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="edits-the-note-of-a-student-code-editnote-code"><a class="link" href="#edits-the-note-of-a-student-code-editnote-code">3.27. Edits the note of a student : <code>editnote</code></a></h3>
+<h3 id="edits-the-note-of-a-student-code-editnote-code"><a class="link" href="#edits-the-note-of-a-student-code-editnote-code">3.29. Edits the note of a student : <code>editnote</code></a></h3>
 <div class="paragraph">
-<p>Sets the corresponding note of the student at the specified index to text. Refer to <a href="#add-a-note-about-a-student-code-note-code">Section 3.25, &#8220;Add a note about a student : <code>note</code>&#8221;</a> for details on text.<br>
+<p>Sets the corresponding note of the student at the specified index to text. Refer to <a href="#add-a-note-about-a-student-code-note-code">Section 3.27, &#8220;Add a note about a student : <code>note</code>&#8221;</a> for details on text.<br>
 Format: <code>editnote INDEX TEXT</code></p>
 </div>
 <div class="admonitionblock note">
@@ -784,12 +907,16 @@ e.g. <code>add n/James Ho s/1 p/22224444 e/jamesho@example.com t/friend t/collea
 e.g. <code>addAssignment n/Assignment 1 w/15 d/14/10/2019 m/100</code></p>
 </li>
 <li>
+<p><strong>AddLesson</strong> : <code>addLesson n/NAME d/DATE</code><br>
+e.g. <code>addLesson n/Tutorial 1 d/11/11/2018</code></p>
+</li>
+<li>
 <p><strong>AssignmentStats</strong> : <code>assignmentStats ASSIGNMENT_INDEX</code><br>
 e.g. <code>assignmentStats 1</code></p>
 </li>
 <li>
-<p><strong>Attend</strong> : <code>attend INDEX at/CLASSNAME</code><br>
-e.g. <code>attend 1 at/Tutorial 1</code></p>
+<p><strong>Attend</strong> : <code>attend INDEX id/SESSION_INDEX at/ATTENDANCE</code><br>
+e.g. <code>attend 1 id/1 at/1</code></p>
 </li>
 <li>
 <p><strong>ClassStats</strong> : <code>classStats</code></p>
@@ -806,6 +933,10 @@ e.g. <code>delete 3</code></p>
 e.g. <code>deleteAssignment 3</code></p>
 </li>
 <li>
+<p><strong>DeleteAttendance</strong> : <code>deleteAttendance id/SESSION_INDEX</code><br>
+e.g. <code>deleteAttendance id/1</code></p>
+</li>
+<li>
 <p><strong>Delnote</strong> : <code>delnote INDEX</code><br>
 e.g. <code>delnote 2</code></p>
 </li>
@@ -816,6 +947,10 @@ e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 <li>
 <p><strong>EditAssignment</strong> : <code>editAssignment INDEX [n/NAME] [w/WEIGHT] [d/DEADLINE] [m/MAXMARK]</code><br>
 e.g. <code>edit 2 n/Assignment3 w/40</code></p>
+</li>
+<li>
+<p><strong>EditLesson</strong> : <code>editLesson id/SESSION_INDEX n/UPDATED_NAME d/UPDATED_DATE</code><br>
+e.g. <code>editLesson id/1 n/Tutorial 2 d/12/12/2018</code></p>
 </li>
 <li>
 <p><strong>Editnote</strong> : <code>editnote INDEX TEXT</code><br>
@@ -856,10 +991,18 @@ e.g. <code>select 2</code></p>
 <p><strong>Sort</strong> : <code>sort</code></p>
 </li>
 <li>
-<p><strong>SortAssignment</strong> : <code>sortAssignment</code></p>
+<p><strong>SortAssignment</strong> : <code>sortAssignment</code>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 </li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
 <li>
-<p><strong>Unattend</strong> : <code>unattend INDEX at/CLASSNAME</code> {Coming in v2.0}</p>
+<p><strong>Unattend</strong> : <code>unattend INDEX at/CLASSNAME</code> {Coming in v2.0}
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; caf11e4085ee854c8ebf7ffb10759b4d7fbf7e6a</p>
 </li>
 <li>
 <p><strong>Undo</strong> : <code>undo</code></p>
@@ -867,4 +1010,6 @@ e.g. <code>select 2</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-13 15:45:55 UTC</div></div></div></body></html>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2018-11-20 04:17:16 UTC</div></div></div></body></html>
