@@ -41,8 +41,9 @@ Responsibilities: UI
 
 === Henry Jayakusuma
 
-image::HenryJk.png[width="150", align="left"]
-{empty}[http://github.com/HenryJk[github]]
+<<<<<<< HEAD
+image::henryjk.png[width="150", align="left"]
+{empty}[http://github.com/HenryJk[github]] [<<henryjk#, portfolio>>]
 
 Role: Developer +
 Responsibilities: Backend
